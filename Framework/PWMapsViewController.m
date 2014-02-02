@@ -57,25 +57,46 @@
     }
     
     NSDictionary *root = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-    NSArray *data = [root objectForKey:@"data"];
+    NSArray *data = [root objectForKey:@"biergartenListe"];
+    
     
     for (NSArray *row in data) {
         // 48.179712;
         // 11.592202;
-        NSNumber * latitude = [[row objectAtIndex:22]objectAtIndex:1];
-        NSNumber * longitude = [[row objectAtIndex:22]objectAtIndex:2];
-        NSString * crimeDescription = [row objectAtIndex:18];
-        NSString * address = [row objectAtIndex:14];
+        
+        NSLog(@"biergartenNSArraAusJson %@", row);
+        
+        NSString* desc = [row valueForKey:@"desc"];
+        NSString* email = [row valueForKey:@"email"];
+        NSString* favorit = [row valueForKey:@"favorit"];
+        NSString* ids = [row valueForKey:@"id"];
+        NSString* latitude = [row valueForKey:@"latitude"];
+        
+        latitude = [latitude stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        NSDecimalNumber *latitudeDezimal = [NSDecimalNumber decimalNumberWithString:latitude];
+        
+        NSString* longitude = [row valueForKey:@"longitude"];
+        longitude = [longitude stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        NSDecimalNumber *longitudeDezimal = [NSDecimalNumber decimalNumberWithString:longitude];
+        
+        NSString* name = [row valueForKey:@"name"];
+        NSString* ort = [row valueForKey:@"ort"];
+        NSString* plz = [row valueForKey:@"plz"];
+        NSString* strasse = [row valueForKey:@"strasse"];
+        NSString* telefon = [row valueForKey:@"telefon"];
+        NSString* url = [row valueForKey:@"url"];
+
+        
         
         CLLocationCoordinate2D coordinate;
-        coordinate.latitude = latitude.doubleValue;
-        coordinate.longitude = longitude.doubleValue;
+        coordinate.latitude = latitudeDezimal.doubleValue;
+        coordinate.longitude = longitudeDezimal.doubleValue;
         
-        PWMyLocation *annotation = [[PWMyLocation alloc] initWithName:crimeDescription address:address coordinate:coordinate] ;
+        PWMyLocation *annotation = [[PWMyLocation alloc] initWithName:name address:strasse coordinate:coordinate] ;
         [_mapView addAnnotation:annotation];
 	}
     
-    
+    // Default Location is Aumeister
     NSString * crimeDescription = @"Aumeister";
     NSString * address = @"Sondermeierstraße 1, 80939 München";
     
@@ -92,49 +113,10 @@
 
 // Replace refreshTapped as follows
 - (IBAction)refreshTapped:(id)sender {
-    // 1
-    MKCoordinateRegion mapRegion = [_mapView region];
-    CLLocationCoordinate2D centerLocation = mapRegion.center;
-    
-    // 2
-    NSString *jsonFile = [[NSBundle mainBundle] pathForResource:@"command" ofType:@"json"];
-    NSString *formatString = [NSString stringWithContentsOfFile:jsonFile encoding:NSUTF8StringEncoding error:nil];
-    NSString *json = [NSString stringWithFormat:formatString,
-                      centerLocation.latitude, centerLocation.longitude, 0.5*METERS_PER_MILE];
-    
-    // 3
-    NSURL *url = [NSURL URLWithString:@"http://data.baltimorecity.gov/api/views/INLINE/rows.json?method=index"];
-    
-    // 4
-    ASIHTTPRequest *_request = [ASIHTTPRequest requestWithURL:url];
-    __weak ASIHTTPRequest *request = _request;
-    
-    request.requestMethod = @"POST";
-    [request addRequestHeader:@"Content-Type" value:@"application/json"];
-    [request appendPostData:[json dataUsingEncoding:NSUTF8StringEncoding]];
-    // 5
-    [request setDelegate:self];
-    [request setCompletionBlock:^{
-        NSString *responseString = [request responseString];
-        NSLog(@"Response: %@", responseString);
-        [self plotCrimePositions:request.responseData];
-    }];
-    [request setFailedBlock:^{
-        NSError *error = [request error];
-        NSLog(@"Error: %@", error.localizedDescription);
-    }];
-    
-    // 6
-    [request startAsynchronous];
-    
-    // ios 6 feature
-    // Add right after [request startAsynchronous] in refreshTapped action method
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Loading arrests...";
-    
-    // Add at start of setCompletionBlock and setFailedBlock blocks
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self loadBiergartenFromCloud];
 }
+
+
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     static NSString *identifier = @"PWMyLocation";
@@ -168,6 +150,32 @@
     
     NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
     [location.mapItem openInMapsWithLaunchOptions:launchOptions];
+}
+
+
+#pragma loadBiergarten
+- (IBAction)loadBiergarten:(id)sender {
+    [self loadBiergartenFromCloud];
+}
+
+- (void) loadBiergartenFromCloud
+{
+    NSString *const BaseURLString = @"http://biergartenservice.appspot.com/platzerworld/biergarten/holebiergarten";
+    NSLog(@"GPL %s", __PRETTY_FUNCTION__);
+    NSURLSession *session = [NSURLSession sharedSession];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Loading arrests...";
+    
+    
+    [[session dataTaskWithURL:[NSURL URLWithString:BaseURLString]
+            completionHandler:^(NSData *nsdata, NSURLResponse *response, NSError *error) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [self plotCrimePositions:nsdata];
+                if (error) {
+                    NSLog(@"Fehler: %@", [error localizedDescription]);
+                }
+                
+            }] resume];
 }
 
 @end

@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 - (IBAction)refreshTapped:(id)sender;
+- (IBAction)loadBiergarten:(id)sender;
 
 @end

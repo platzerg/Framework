@@ -257,6 +257,11 @@
                                             <action selector="refreshTapped:" destination="HDA-fs-lSA" id="zVe-yN-l5h"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="load Biergarten" id="pC5-hT-rZJ">
+                                        <connections>
+                                            <action selector="loadBiergarten:" destination="HDA-fs-lSA" id="eJY-ae-IyZ"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AiW-y4-P96">
