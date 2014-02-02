@@ -1,0 +1,55 @@
+PODS:
+  - AFNetworking (2.1.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.1.0):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.1.0)
+  - AFNetworking/Security (2.1.0)
+  - AFNetworking/Serialization (2.1.0)
+  - AFNetworking/UIKit (2.1.0):
+    - AFNetworking/NSURLConnection
+  - Facebook-iOS-SDK (3.11.1)
+  - HexColors (2.2.1)
+  - LBBlurredImage (0.1.0)
+  - Mantle (1.3.1):
+    - Mantle/extobjc
+  - Mantle/extobjc (1.3.1)
+  - Reachability (3.1.1)
+  - ReactiveCocoa (2.2.3):
+    - ReactiveCocoa/Core
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/Core (2.2.3):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.2.3)
+  - TSMessages (0.9.4):
+    - HexColors
+
+DEPENDENCIES:
+  - AFNetworking
+  - Facebook-iOS-SDK
+  - LBBlurredImage
+  - Mantle
+  - Reachability
+  - ReactiveCocoa
+  - TSMessages
+
+SPEC CHECKSUMS:
+  AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
+  Facebook-iOS-SDK: 42a1de39170b858d675c2453d8aace55c51be2bb
+  HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
+  LBBlurredImage: f44c432794e2a8a225f4c8a563aa1bd713b6b4c5
+  Mantle: abc3b0c81bc66eb624cf9cebb8640e377d5a44ae
+  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
+  ReactiveCocoa: b3cb6ebd50f1a0f2e39c6fd7ce3c428b6efcb22b
+  TSMessages: 5ab92604b02e49a755d2cc2baf114d2248a90977
+
+COCOAPODS: 0.29.0

@@ -53,11 +53,12 @@ NSString *remoteHostName = @"http://biergartenservice.appspot.com/platzerworld/b
 {
     if(!networkServiceEnabled)
     {
-        self.hostReachability = [Reachability reachabilityWithHostName:@"www.apple.com"];
+        
+        self.hostReachability = [Reachability reachabilityWithHostname:@"apple.com"];
         [self.hostReachability startNotifier];
         [self updateInterfaceWithReachability:self.hostReachability];
         
-        [self setNetworkServiceEnabledFor:self.internetReachability];
+        [self setNetworkServiceEnabledFor:self.hostReachability];
 
     }
     return networkServiceEnabled;
