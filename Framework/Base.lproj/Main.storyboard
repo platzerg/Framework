@@ -262,6 +262,16 @@
                                             <action selector="loadBiergarten:" destination="HDA-fs-lSA" id="eJY-ae-IyZ"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Delete biergarten" id="INK-d1-VZS">
+                                        <connections>
+                                            <action selector="deleteAllBiergarten:" destination="HDA-fs-lSA" id="s6I-zg-86N"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Google Places" id="zRe-yq-vOi">
+                                        <connections>
+                                            <action selector="showGooglePlaces:" destination="HDA-fs-lSA" id="iTs-Bb-f4l"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AiW-y4-P96">
