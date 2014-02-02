@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0B39F2FE189E403C0009A885 /* command.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B39F2FD189E403C0009A885 /* command.json */; };
+		0B39F301189E42B20009A885 /* PWMyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B39F300189E42B20009A885 /* PWMyLocation.m */; };
+		0B39F305189E48CC0009A885 /* arrest.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B39F304189E48CC0009A885 /* arrest.png */; };
 		0B81F73E189CDDCD00E273A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B81F73D189CDDCD00E273A6 /* Foundation.framework */; };
 		0B81F740189CDDCD00E273A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B81F73F189CDDCD00E273A6 /* CoreGraphics.framework */; };
 		0B81F742189CDDCD00E273A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B81F741189CDDCD00E273A6 /* UIKit.framework */; };
@@ -45,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		0B39F2FD189E403C0009A885 /* command.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = command.json; sourceTree = "<group>"; };
+		0B39F2FF189E42B20009A885 /* PWMyLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMyLocation.h; sourceTree = "<group>"; };
+		0B39F300189E42B20009A885 /* PWMyLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMyLocation.m; sourceTree = "<group>"; };
+		0B39F304189E48CC0009A885 /* arrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrest.png; sourceTree = "<group>"; };
 		0B81F73A189CDDCD00E273A6 /* Framework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Framework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B81F73D189CDDCD00E273A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B81F73F189CDDCD00E273A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -163,6 +168,7 @@
 		0B81F744189CDDCD00E273A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0B39F304189E48CC0009A885 /* arrest.png */,
 				0B39F2FD189E403C0009A885 /* command.json */,
 				0B81F745189CDDCD00E273A6 /* Framework-Info.plist */,
 				0B81F746189CDDCD00E273A6 /* InfoPlist.strings */,
@@ -243,6 +249,8 @@
 			children = (
 				0BAE4C90189E3689006C8526 /* PWMapsViewController.h */,
 				0BAE4C91189E3689006C8526 /* PWMapsViewController.m */,
+				0B39F2FF189E42B20009A885 /* PWMyLocation.h */,
+				0B39F300189E42B20009A885 /* PWMyLocation.m */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -327,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B81F759189CDDCD00E273A6 /* Images.xcassets in Resources */,
+				0B39F305189E48CC0009A885 /* arrest.png in Resources */,
 				0B81F748189CDDCD00E273A6 /* InfoPlist.strings in Resources */,
 				0B81F751189CDDCD00E273A6 /* Main.storyboard in Resources */,
 				0B39F2FE189E403C0009A885 /* command.json in Resources */,
@@ -382,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B81F77A189CE9DB00E273A6 /* PWLocationViewController.m in Sources */,
+				0B39F301189E42B20009A885 /* PWMyLocation.m in Sources */,
 				0BAE4C92189E3689006C8526 /* PWMapsViewController.m in Sources */,
 				0B81F78D189D05E400E273A6 /* PWLocationManager.m in Sources */,
 				0B81F74A189CDDCD00E273A6 /* main.m in Sources */,

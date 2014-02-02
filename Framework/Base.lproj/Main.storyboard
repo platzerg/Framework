@@ -252,7 +252,7 @@
                                 <rect key="frame" x="0.0" y="672" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Refresh" id="0WV-By-S31">
+                                    <barButtonItem title="show Aumeister" id="0WV-By-S31">
                                         <connections>
                                             <action selector="refreshTapped:" destination="HDA-fs-lSA" id="zVe-yN-l5h"/>
                                         </connections>
@@ -260,8 +260,11 @@
                                 </items>
                             </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AiW-y4-P96">
-                                <rect key="frame" x="0.0" y="64" width="1024" height="608"/>
+                                <rect key="frame" x="0.0" y="59" width="1024" height="608"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HDA-fs-lSA" id="aJE-WL-sWf"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

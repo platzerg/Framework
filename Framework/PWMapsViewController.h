@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <ASIHTTPRequest/ASIHTTPRequest.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import "PWMyLocation.h"
 
 #define METERS_PER_MILE 1609.344
 

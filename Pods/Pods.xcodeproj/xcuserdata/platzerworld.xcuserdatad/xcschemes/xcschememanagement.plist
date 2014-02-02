@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-ASIHTTPRequest.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Facebook-iOS-SDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -20,6 +25,11 @@
 			<false/>
 		</dict>
 		<key>Pods-LBBlurredImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,47 +62,57 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0C5653249A184036A32E4E58</key>
+		<key>0ABB1AFD7327434F8794ECAA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1F51A02F24A24D1DB7DF7D83</key>
+		<key>221F667C6EA2423ABA6E132A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2A0ED984681D4CC29913B114</key>
+		<key>64C207888DD94CB89C655428</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>53FA7A0DBA5D4BB39D335CF8</key>
+		<key>66DB001AAEE04ABDB1D6BE1C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>576E708BAF4D44E5AC3AC567</key>
+		<key>74923B610BE642A2BCFA59B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5E7B1492C359450C963922BF</key>
+		<key>A4DE6E12E6364EC69F624736</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>94AA9405F7A2452196A143DB</key>
+		<key>C507309FFAA34F819F924DE3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D51CA56472C34D6EAC182F21</key>
+		<key>C66AE823F6B8472BB878271C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D8F39FC1E8B64DFE87E7FFD2</key>
+		<key>D290DE5A000F4796A0ED24E6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D4BD66C041AD4224A72D82A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D56313FB7146448781AB32C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
