@@ -272,6 +272,11 @@
                                             <action selector="showGooglePlaces:" destination="HDA-fs-lSA" id="iTs-Bb-f4l"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="Add Region" id="dnd-fB-WQ7">
+                                        <connections>
+                                            <action selector="addRegion:" destination="HDA-fs-lSA" id="Vkb-hZ-FST"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AiW-y4-P96">

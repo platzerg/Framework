@@ -17,17 +17,6 @@ PODS:
   - AFNetworking/Serialization (2.1.0)
   - AFNetworking/UIKit (2.1.0):
     - AFNetworking/NSURLConnection
-  - ASIHTTPRequest (1.8.1):
-    - ASIHTTPRequest/ASIWebPageRequest
-    - ASIHTTPRequest/CloudFiles
-    - ASIHTTPRequest/S3
-    - Reachability
-  - ASIHTTPRequest/ASIWebPageRequest (1.8.1):
-    - Reachability
-  - ASIHTTPRequest/CloudFiles (1.8.1):
-    - Reachability
-  - ASIHTTPRequest/S3 (1.8.1):
-    - Reachability
   - Facebook-iOS-SDK (3.11.1)
   - HexColors (2.2.1)
   - LBBlurredImage (0.1.0)
@@ -47,18 +36,16 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - ASIHTTPRequest
   - Facebook-iOS-SDK
   - LBBlurredImage
   - Mantle
-  - MBProgressHUD (~> 0.8)
+  - MBProgressHUD
   - Reachability
   - ReactiveCocoa
   - TSMessages
 
 SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
-  ASIHTTPRequest: 162783e0cd71bdd3ff1ceed0cd5fa9505e0116a8
   Facebook-iOS-SDK: 42a1de39170b858d675c2453d8aace55c51be2bb
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
   LBBlurredImage: f44c432794e2a8a225f4c8a563aa1bd713b6b4c5

@@ -14,6 +14,8 @@
 
 @implementation PWMapsViewController
 
+@synthesize locationManager;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,7 +28,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Create location manager with filters set for battery efficiency.
+	locationManager = [[CLLocationManager alloc] init];
+	locationManager.delegate = self;
+	locationManager.distanceFilter = kCLLocationAccuracyHundredMeters;
+	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+	
+	// Start updating location changes.
+	[locationManager startUpdatingLocation];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -40,6 +50,12 @@
     
     // 3
     [_mapView setRegion:viewRegion animated:YES];
+    
+}
+
+- (void)viewDidUnload {
+	self.locationManager.delegate = nil;
+	self.locationManager = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,7 +63,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 // Add new method above refreshTapped
@@ -120,6 +135,7 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     static NSString *identifier = @"PWMyLocation";
+
     if ([annotation isKindOfClass:[PWMyLocation class]]) {
         
         MKAnnotationView *annotationView = (MKAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
@@ -131,7 +147,18 @@
             
             // ios 6 new feature
             // Add to mapView:viewForAnnotation: after setting the image on the annotation view
-            annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            
+            UIButton *removeRegionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            removeRegionButton.tag = 1;
+			[removeRegionButton setFrame:CGRectMake(0., 0., 25., 25.)];
+			[removeRegionButton setImage:[UIImage imageNamed:@"RemoveRegion"] forState:UIControlStateNormal];
+			annotationView.leftCalloutAccessoryView = removeRegionButton;
+            
+
+            
+            UIButton *mapButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            mapButton.tag = 2;
+            annotationView.rightCalloutAccessoryView = mapButton;
             
             
         } else {
@@ -139,17 +166,68 @@
         }
         
         return annotationView;
-    }
+    }else if([annotation isKindOfClass:[RegionAnnotation class]]) {
+		RegionAnnotation *currentAnnotation = (RegionAnnotation *)annotation;
+		RegionAnnotationView *regionView = (RegionAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:@"RegionAnnotation"];
+		
+		if (!regionView) {
+			regionView = [[RegionAnnotationView alloc] initWithAnnotation:currentAnnotation withIdentifier:@"RegionAnnotation"];
+			regionView.map = _mapView;
+			
+            // Create a button for the left callout accessory view of each annotation to remove the annotation and region being monitored.
+			UIButton *removeRegionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            removeRegionButton.tag = 3;
+            
+			[removeRegionButton setFrame:CGRectMake(0., 0., 25., 25.)];
+			[removeRegionButton setImage:[UIImage imageNamed:@"RemoveRegion"] forState:UIControlStateNormal];
+			
+			regionView.leftCalloutAccessoryView = removeRegionButton;
+		} else {
+			regionView.annotation = annotation;
+			regionView.theAnnotation = annotation;
+		}
+		
+		// Update or add the overlay displaying the radius of the region around the annotation.
+		[regionView updateRadiusOverlay];
+		
+		return regionView;
+	}
     
     return nil;
 }
 
 // Add the following method
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    PWMyLocation *location = (PWMyLocation*)view.annotation;
     
-    NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
-    [location.mapItem openInMapsWithLaunchOptions:launchOptions];
+    if ([view.annotation isKindOfClass:[PWMyLocation class]]) {
+        
+        UIButton* leftButton = (UIButton*)control;
+        if (leftButton.tag == 1) {
+            MKAnnotationView *regionView = (MKAnnotationView *)view;
+            if ([regionView.annotation isKindOfClass:[PWMyLocation class]]) {
+                [_mapView removeAnnotation:regionView.annotation];
+            }else {
+                NSLog(@"TEST: %@", regionView.annotation);
+            }
+        }
+        else if (leftButton.tag == 2)
+        {
+            PWMyLocation *location = (PWMyLocation*)view.annotation;
+            
+            NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
+            [location.mapItem openInMapsWithLaunchOptions:launchOptions];
+        }
+        
+    }
+    else{
+        RegionAnnotationView *regionView = (RegionAnnotationView *)view;
+        RegionAnnotation *regionAnnotation = (RegionAnnotation *)regionView.annotation;
+        
+        // Stop monitoring the region, remove the radius overlay, and finally remove the annotation from the map.
+        [locationManager stopMonitoringForRegion:regionAnnotation.region];
+        [regionView removeRadiusOverlay];
+        [_mapView removeAnnotation:regionAnnotation];
+    }
 }
 
 
@@ -197,11 +275,20 @@
     for (id<MKAnnotation> annotation in _mapView.annotations) {
         if ([annotation isKindOfClass:[PWMyLocation class]]) {
             [_mapView removeAnnotation:annotation];
-        }else{
+        }else {
             NSLog(@"TEST: %@", annotation);
         }
-        
     }
+    
+    /*
+    
+    RegionAnnotationView *mRegionView = (RegionAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:@"RegionAnnotation"];
+    RegionAnnotation *regionAnnotation = (RegionAnnotation *)mRegionView.annotation;
+    [mRegionView updateRadiusOverlay];
+    // Stop monitoring the region, remove the radius overlay, and finally remove the annotation from the map.
+    [locationManager stopMonitoringForRegion:regionAnnotation.region];
+    
+    */
 }
 
 
@@ -333,6 +420,104 @@
         [self.mapView addAnnotation:placeObject];
     }
 }
+
+- (IBAction)addRegion:(id)sender {
+    NSLog(@"addRegion");
+    if ([CLLocationManager regionMonitoringAvailable]) {
+		// Create a new region based on the center of the map view.
+		CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(_mapView.centerCoordinate.latitude, _mapView.centerCoordinate.longitude);
+		CLRegion *newRegion = [[CLRegion alloc] initCircularRegionWithCenter:coord
+																	  radius:6000.0
+																  identifier:[NSString stringWithFormat:@"%f, %f", _mapView.centerCoordinate.latitude, _mapView.centerCoordinate.longitude]];
+		
+		// Create an annotation to show where the region is located on the map.
+		RegionAnnotation *myRegionAnnotation = [[RegionAnnotation alloc] initWithCLRegion:newRegion];
+		myRegionAnnotation.coordinate = newRegion.center;
+		myRegionAnnotation.radius = newRegion.radius;
+		
+		[_mapView addAnnotation:myRegionAnnotation];
+		
+		// Start monitoring the newly created region.
+		[locationManager startMonitoringForRegion:newRegion desiredAccuracy:kCLLocationAccuracyBest];
+	}
+	else {
+		NSLog(@"Region monitoring is not available.");
+	}
+}
+
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
+	if([overlay isKindOfClass:[MKCircle class]]) {
+		// Create the view for the radius overlay.
+		MKCircleView *circleView = [[MKCircleView alloc] initWithOverlay:overlay];
+		circleView.strokeColor = [UIColor purpleColor];
+		circleView.fillColor = [[UIColor purpleColor] colorWithAlphaComponent:0.4];
+		
+		return circleView;
+	}
+	
+	return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
+	if([annotationView isKindOfClass:[RegionAnnotationView class]]) {
+		RegionAnnotationView *regionView = (RegionAnnotationView *)annotationView;
+		RegionAnnotation *regionAnnotation = (RegionAnnotation *)regionView.annotation;
+		
+		// If the annotation view is starting to be dragged, remove the overlay and stop monitoring the region.
+		if (newState == MKAnnotationViewDragStateStarting) {
+			[regionView removeRadiusOverlay];
+			
+			[locationManager stopMonitoringForRegion:regionAnnotation.region];
+		}
+		
+		// Once the annotation view has been dragged and placed in a new location, update and add the overlay and begin monitoring the new region.
+		if (oldState == MKAnnotationViewDragStateDragging && newState == MKAnnotationViewDragStateEnding) {
+			[regionView updateRadiusOverlay];
+			
+			CLRegion *newRegion = [[CLRegion alloc] initCircularRegionWithCenter:regionAnnotation.coordinate radius:1000.0 identifier:[NSString stringWithFormat:@"%f, %f", regionAnnotation.coordinate.latitude, regionAnnotation.coordinate.longitude]];
+			regionAnnotation.region = newRegion;
+			
+			[locationManager startMonitoringForRegion:regionAnnotation.region desiredAccuracy:kCLLocationAccuracyBest];
+		}
+	}
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+	NSLog(@"didUpdateToLocation %@ from %@", newLocation, oldLocation);
+	
+	// Work around a bug in MapKit where user location is not initially zoomed to.
+	if (oldLocation == nil) {
+		// Zoom to the current user location.
+		MKCoordinateRegion userLocation = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 1500.0, 1500.0);
+		[_mapView setRegion:userLocation animated:YES];
+	}
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+	NSLog(@"didFailWithError: %@", error);
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region  {
+	NSString *event = [NSString stringWithFormat:@"didEnterRegion %@ at %@", region.identifier, [NSDate date]];
+	
+	
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+	NSString *event = [NSString stringWithFormat:@"didExitRegion %@ at %@", region.identifier, [NSDate date]];
+	
+	
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
+	NSString *event = [NSString stringWithFormat:@"monitoringDidFailForRegion %@: %@", region.identifier, error];
+	
+}
+
+
 
 
 @end
