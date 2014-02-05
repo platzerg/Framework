@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PWNetworkViewController : UIViewController
+@interface PWNetworkViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+- (IBAction)showMantle:(id)sender;
 
 @end

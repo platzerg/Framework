@@ -68,7 +68,11 @@
 // Add new method above refreshTapped
 - (void)plotCrimePositions:(NSData *)responseData {
     for (id<MKAnnotation> annotation in _mapView.annotations) {
-        [_mapView removeAnnotation:annotation];
+        if ([annotation isKindOfClass:[PWMyLocation class]])
+        {
+            [_mapView removeAnnotation:annotation];
+        }
+        
     }
     
     NSDictionary *root = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
