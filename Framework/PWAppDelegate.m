@@ -7,6 +7,8 @@
 //
 
 #import "PWAppDelegate.h"
+#import <TSMessage.h>
+
 
 @implementation PWAppDelegate
 
@@ -14,7 +16,7 @@
 {
     // Override point for customization after application launch.
     
-    
+     [TSMessage setDefaultViewController: self.window.rootViewController];
     
     return YES;
 }

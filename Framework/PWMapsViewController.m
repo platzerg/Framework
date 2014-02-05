@@ -78,40 +78,27 @@
     NSDictionary *root = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
     NSArray *data = [root objectForKey:@"biergartenListe"];
     
+    PWBiergarten* biergarten = nil;
     
     for (NSArray *row in data) {
         // 48.179712;
         // 11.592202;
+        biergarten = [MTLJSONAdapter modelOfClass:[PWBiergarten class] fromJSONDictionary:row error:nil];
         
         NSLog(@"biergartenNSArraAusJson %@", row);
         
-        NSString* desc = [row valueForKey:@"desc"];
-        NSString* email = [row valueForKey:@"email"];
-        NSString* favorit = [row valueForKey:@"favorit"];
-        NSString* ids = [row valueForKey:@"id"];
-        NSString* latitude = [row valueForKey:@"latitude"];
+        BOOL boolValue = [[row valueForKey:@"favorit"] boolValue];
         
-        latitude = [latitude stringByReplacingOccurrencesOfString:@"," withString:@"."];
-        NSDecimalNumber *latitudeDezimal = [NSDecimalNumber decimalNumberWithString:latitude];
+        biergarten.latitude = [biergarten.latitude stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        NSDecimalNumber *latitudeDezimal = [NSDecimalNumber decimalNumberWithString:biergarten.latitude];
         
-        NSString* longitude = [row valueForKey:@"longitude"];
-        longitude = [longitude stringByReplacingOccurrencesOfString:@"," withString:@"."];
-        NSDecimalNumber *longitudeDezimal = [NSDecimalNumber decimalNumberWithString:longitude];
+        biergarten.longitude = [biergarten.longitude stringByReplacingOccurrencesOfString:@"," withString:@"."];
+        NSDecimalNumber *longitudeDezimal = [NSDecimalNumber decimalNumberWithString:biergarten.longitude];
         
-        NSString* name = [row valueForKey:@"name"];
-        NSString* ort = [row valueForKey:@"ort"];
-        NSString* plz = [row valueForKey:@"plz"];
-        NSString* strasse = [row valueForKey:@"strasse"];
-        NSString* telefon = [row valueForKey:@"telefon"];
-        NSString* url = [row valueForKey:@"url"];
-
-        
-        
-        CLLocationCoordinate2D coordinate;
-        coordinate.latitude = latitudeDezimal.doubleValue;
-        coordinate.longitude = longitudeDezimal.doubleValue;
-        
-        PWMyLocation *annotation = [[PWMyLocation alloc] initWithName:name address:strasse coordinate:coordinate] ;
+        PWMyLocation *annotation = [[PWMyLocation alloc] initWithName:biergarten.name
+                                                        address:biergarten.strasse
+                                                        coordinate:CLLocationCoordinate2DMake(latitudeDezimal.doubleValue, longitudeDezimal.doubleValue)] ;
+        annotation.biergarten = biergarten;
         [_mapView addAnnotation:annotation];
 	}
     

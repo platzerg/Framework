@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PWLocationViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *startMantle;
+- (IBAction)startMantle:(id)sender;
 
 @end

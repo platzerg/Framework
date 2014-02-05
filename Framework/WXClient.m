@@ -18,6 +18,7 @@
 
 @implementation WXClient
 
+
 - (id)init {
     if (self = [super init]) {
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];

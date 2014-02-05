@@ -6,20 +6,28 @@
 //  Copyright (c) 2014 platzerworld. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
+@import Foundation;
+@import CoreLocation;
+#import <ReactiveCocoa/ReactiveCocoa/ReactiveCocoa.h>
+#import "PWBiergarten.h"
 
-@interface PWManager : NSObject{
+@interface PWManager : NSObject <CLLocationManagerDelegate>{
     NSString *someProperty;
 }
 
 @property (nonatomic, retain) NSString *value;
 
-+ (id)sharedManager;
++ (id)sharedManagerGpl;
 + (id)sharedGCDManager;
++ (instancetype)sharedManager;
+
+@property (nonatomic, strong, readonly) CLLocation *currentLocation;
+@property (nonatomic, strong, readonly) NSArray *hourlyForecast;
 
 
 - (void)checkLocationServiceEnabled;
+
+- (void)findCurrentLocation;
 
 
 @end

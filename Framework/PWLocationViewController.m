@@ -7,6 +7,8 @@
 //
 
 #import "PWLocationViewController.h"
+#import <LBBlurredImage/UIImageView+LBBlurredImage.h>
+#import "PWManager.h"
 
 @interface PWLocationViewController ()
 
@@ -33,6 +35,29 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)startMantle:(id)sender {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [[RACObserve([PWManager sharedManager], hourlyForecast)
+      deliverOn:RACScheduler.mainThreadScheduler]
+      subscribeNext:^(NSArray *biergartenArray) {
+          
+          if(biergartenArray)
+          {
+              NSLog(@"subscribeNext -> %s", __PRETTY_FUNCTION__);
+              NSLog(@"jsonData %@", biergartenArray);
+              
+              for (PWBiergarten* biergarten in biergartenArray) {
+                  NSLog(@"%@", biergarten);
+              }
+          }
+          
+      }];
+    
+    
+    [[ PWManager sharedManager] findCurrentLocation];
+
 }
 
 @end

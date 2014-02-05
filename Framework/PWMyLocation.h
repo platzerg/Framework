@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "PWBiergarten.h"
 
 
 @interface PWMyLocation : NSObject <MKAnnotation>
+
+@property (nonatomic, weak) PWBiergarten *biergarten;
 
 - (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate;
 - (MKMapItem*)mapItem;
