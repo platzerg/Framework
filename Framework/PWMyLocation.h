@@ -13,7 +13,7 @@
 
 @interface PWMyLocation : NSObject <MKAnnotation>
 
-@property (nonatomic, weak) PWBiergarten *biergarten;
+@property (nonatomic, strong) PWBiergarten *biergarten;
 
 - (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate;
 - (MKMapItem*)mapItem;

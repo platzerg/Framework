@@ -150,7 +150,7 @@
             UIButton *mapButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             mapButton.tag = 2;
             annotationView.rightCalloutAccessoryView = mapButton;
-            
+          
             
         } else {
             annotationView.annotation = annotation;
@@ -203,7 +203,10 @@
         }
         else if (leftButton.tag == 2)
         {
-            PWMyLocation *location = (PWMyLocation*)view.annotation;
+            PWMyLocation* location = (PWMyLocation*)view.annotation;
+            
+            // NSString* d = [NSString stringWithFormat:@"%@",location.biergarten ];
+            // [TSMessage showNotificationWithTitle:@"INFO" subtitle:d type:TSMessageNotificationTypeSuccess];
             
             NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
             [location.mapItem openInMapsWithLaunchOptions:launchOptions];

@@ -13,6 +13,7 @@
 #import "RegionAnnotation.h"
 #import "RegionAnnotationView.h"
 #import "PWBiergarten.h"
+#import <TSMessage.h>
 
 #define METERS_PER_MILE 1609.344
 // #define kGOOGLE_API_KEY @"AIzaSyDL4y7nosmZoAhIiHAqcYMqW5_M7q69_yI"

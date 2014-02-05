@@ -78,8 +78,10 @@
     return [self dateJSONTransformer];
 }
 
-
-
++ (NSValueTransformer *)favoritJSONTransformer {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    return [NSValueTransformer valueTransformerForName:MTLBooleanValueTransformerName];
+}
 
 
 
