@@ -13,13 +13,14 @@
 
 @interface PWManager ()
 
-@property (nonatomic, strong, readwrite) PWBiergarten *currentCondition;
+@property (nonatomic, strong, readwrite) PWBiergarten *currentBiergarten;
 @property (nonatomic, strong, readwrite) CLLocation *currentLocation;
 @property (nonatomic, strong, readwrite) NSArray *hourlyForecast;
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, assign) BOOL isFirstUpdate;
 @property (nonatomic, strong) PWBiergartenClient *client;
+
 
 @end
 
@@ -64,6 +65,7 @@ static NSString *const BaseURLString = @"http://biergartenservice.appspot.com/pl
          subscribeError:^(NSError *error) {
              [TSMessage showNotificationWithTitle:@"Error" subtitle:@"There was a problem fetching the latest weather." type:TSMessageNotificationTypeError];
          }];
+        
         
          }
     return self;
@@ -117,6 +119,11 @@ static NSString *const BaseURLString = @"http://biergartenservice.appspot.com/pl
     }else{
         NSLog(@"LocationService disabled");
     }
+}
+
+- (void)setCurrentBiergarten:(PWBiergarten *)currentBiergarten
+{
+    self.currentBiergarten = currentBiergarten;
 }
 
 

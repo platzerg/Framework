@@ -14,6 +14,7 @@
 #import "RegionAnnotationView.h"
 #import "PWBiergarten.h"
 #import <TSMessage.h>
+#import "PWDetailsViewController.h"
 
 #define METERS_PER_MILE 1609.344
 // #define kGOOGLE_API_KEY @"AIzaSyDL4y7nosmZoAhIiHAqcYMqW5_M7q69_yI"
@@ -27,6 +28,8 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) CLLocationManager *locationManager;
+
+@property (nonatomic, retain) PWBiergarten *biergarten;
 
 - (IBAction)refreshTapped:(id)sender;
 - (IBAction)loadBiergarten:(id)sender;

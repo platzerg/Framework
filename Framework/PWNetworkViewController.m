@@ -9,6 +9,8 @@
 #import "PWNetworkViewController.h"
 #import <LBBlurredImage/UIImageView+LBBlurredImage.h>
 #import "WXManager.h"
+#import <SystemConfiguration/CaptiveNetwork.h>
+#import "PWAppDelegate.h"
 
 @interface PWNetworkViewController ()
 @property (nonatomic, strong) UIImageView *backgroundImageView;
@@ -17,9 +19,14 @@
 @property (nonatomic, assign) CGFloat screenHeight;
 @property (nonatomic, strong) NSDateFormatter *hourlyFormatter;
 @property (nonatomic, strong) NSDateFormatter *dailyFormatter;
+
+
 @end
 
 @implementation PWNetworkViewController
+
+static const NSString *kezMobileURL =@"https://isjp7dbz.in.audi.vwg/kezmobile";
+static const NSString *kezMobileHRURL = @"https://isjkpdbz.in.audi.vwg/kezmobile";
 
 - (id)init {
     if (self = [super init]) {
@@ -35,6 +42,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeDismissed:) name:UIKeyboardWillHideNotification object:nil];
+    /*
 	self.screenHeight = [UIScreen mainScreen].bounds.size.height;
     
     UIImage *background = [UIImage imageNamed:@"bg"];
@@ -143,6 +153,8 @@
      }];
     
     [[WXManager sharedManager] findCurrentLocation];
+     
+     */
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -253,6 +265,201 @@
     
 
     
+}
+
+- (IBAction)startNetworkNotification:(id)sender {
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        NSLog(@"%s", __PRETTY_FUNCTION__);
+
+    }
+    NSHTTPCookieStorage* cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    
+    [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *cacheFilePath = [cachePath stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]];
+    if(![fileManager fileExistsAtPath:[cacheFilePath stringByAppendingPathComponent:@"nsurlcache"]]) {
+        //create it, copy it from app bundle, download it etc.
+        int cacheSizeMemory = 8 * 1024 * 1024; // 8MB
+        int cacheSizeDisk = 32 * 1024 * 1024; // 32MB
+        NSURLCache* sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"];
+        [NSURLCache setSharedURLCache:sharedCache];
+        
+    }
+
+    // Set the application defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"NO" forKey:@"keyClearCache"];
+    NSDictionary *appDefaultsKEZ = [NSDictionary dictionaryWithObject:@"YES" forKey:@"keyKEZmobilEnabled"];
+    NSDictionary *appDefaultsHR = [NSDictionary dictionaryWithObject:@"YES" forKey:@"keyKEZmobilHREnabled"];
+    NSDictionary *appDefaultsKEZPage = [NSDictionary dictionaryWithObject: kezMobileURL
+                                                                   forKey:@"keyStartPageKEZ"];
+    NSDictionary *appDefaultsHRPage = [NSDictionary dictionaryWithObject:kezMobileHRURL
+                                                                  forKey:@"keyStartPageHR"];
+    [defaults registerDefaults:appDefaults];
+    [defaults registerDefaults:appDefaultsHR];
+    [defaults registerDefaults:appDefaultsKEZ];
+    [defaults registerDefaults:appDefaultsKEZPage];
+    [defaults registerDefaults:appDefaultsHRPage];
+    [defaults synchronize];
+    
+    [self clearCache];
+   
+}
+
+-(void) clearCache {
+    BOOL shouldClearCache  = [[NSUserDefaults standardUserDefaults] boolForKey:@"keyClearCache"];
+    
+    if (shouldClearCache) {
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        
+        
+        //change !!!!
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *cacheFilePath = [cachePath stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]];
+        if([fileManager fileExistsAtPath:[cacheFilePath stringByAppendingPathComponent:@"nsurlcache"]]) {
+            
+            [fileManager removeItemAtPath:[cacheFilePath stringByAppendingPathComponent:@"nsurlcache"] error:NULL];
+            //create it, copy it from app bundle, download it etc.
+            int cacheSizeMemory = 8 * 1024 * 1024; // 8MB
+            int cacheSizeDisk = 32 * 1024 * 1024; // 32MB
+            NSURLCache* sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"];
+            [NSURLCache setSharedURLCache:sharedCache];
+            
+        }
+        
+        
+        
+        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"keyClearCache"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+}
+
+- (IBAction)stopNetworkNotification:(id)sender {
+    NSString *currentSSID =  [self currentWifiSSID];
+    
+    PWAppDelegate* appDel = (PWAppDelegate *) [[UIApplication sharedApplication] delegate];
+    [appDel description];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendEmailToHelpDesk:) name:@"kSendMailHelpDesk" object:nil];
+    
+    NSString *urlString = [NSString stringWithFormat:@"mailto"];
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"kSendMailHelpDesk" object:urlString]];
+}
+
+- (NSString *)currentWifiSSID {
+    
+    NSString *ssid = nil;
+    NSArray *ifs = (__bridge  id)CNCopySupportedInterfaces();
+    for (NSString *ifnam in ifs) {
+        NSDictionary *info = (__bridge  id)CNCopyCurrentNetworkInfo((__bridge  CFStringRef)ifnam);
+        // NSLog(@"info %@",[info valueForKey:@"SSID"]);
+        if (info[@"SSID"]) {
+            ssid = [info valueForKey:@"SSID"];
+        }
+    }
+    return ssid;
+}
+
+#pragma mark - Keyboard notifications
+// This method handles the animation of the view when the keyboard is displayed
+- (void)keyboardWasShown:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    NSValue *aValue = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+   
+}
+
+- (void)keyboardWillBeDismissed:(NSNotification *)notification {
+    [UIView animateWithDuration:0.3 animations:^{
+        NSValue *aValue = notification;
+    }];
+}
+
+- (void) sendEmailToHelpDesk:(NSNotification*) notification {
+    /*
+    NSURL* url = notification.object;
+    NSString *urlString = url.absoluteString;
+    NSString *emailAddress = @"";
+    NSString *subjectTitle = @"";
+    NSString *bodyText = @"";
+    
+    
+    NSArray* emailContent = [self parseURLString:urlString];
+    emailAddress = [emailContent objectAtIndex:0];
+    subjectTitle = [emailContent objectAtIndex:1];
+    bodyText = [emailContent objectAtIndex:2];
+    
+    
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController * emailController = [[MFMailComposeViewController alloc] init];
+        emailController.mailComposeDelegate = self;
+        
+        [emailController setSubject:subjectTitle];
+        [emailController setMessageBody:bodyText isHTML:NO];
+        [emailController setToRecipients:[NSArray arrayWithObject:emailAddress]];
+        
+        [self presentModalViewController:emailController animated:YES];
+        
+        // [emailController release];
+    }
+    
+    else {
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"You must have a mail account in order to send an email" delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"OK") otherButtonTitles:nil];
+        [alertView show];
+        // [alertView release];
+    }
+    */
+}
+
+-(NSArray *) parseURLString:(NSString *) urlString {
+    
+    // separate email address from subject and body
+    NSArray *pathComponents = [urlString componentsSeparatedByString: @"?"];
+    NSString *string2 = (NSString*) [pathComponents objectAtIndex:0];
+    NSArray *mailComponents = [string2 componentsSeparatedByString: @":"];
+    NSString *emailAddr = (NSString*) [mailComponents objectAtIndex:1];
+    
+    // separate subject from body
+    NSArray *textComponents = [(NSString*) [pathComponents objectAtIndex:1] componentsSeparatedByString:@"&"];
+    NSString *subject = @"";
+    NSString *body = @"";
+    NSString *safeTextString = @"";
+    NSString *safeBodyString = @"";
+    // is subject present -> decode it
+    if (textComponents.count != 0) {
+        subject = [textComponents objectAtIndex:0];
+        NSArray *subjectComponents = [subject componentsSeparatedByString: @"="];
+        NSString *subjectTitle = [subjectComponents objectAtIndex:1];
+        safeTextString  = [subjectTitle stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        
+    }
+    // if body present -> decode it
+    if (textComponents.count >1) {
+        body = [textComponents objectAtIndex:1];
+        NSArray *bodyComponents = [body componentsSeparatedByString: @"="];
+        NSString *bodyText = [bodyComponents objectAtIndex:1];
+        
+        //      NSString *parseBodyString = [[bodyText componentsSeparatedByString:@"%20"] componentsJoinedByString:@" "];
+        NSString *parseBodyString = [[bodyText componentsSeparatedByString:@"%0A"] componentsJoinedByString:@"\n"];
+        safeBodyString = [parseBodyString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
+    
+    NSArray *emailContent = [[NSArray alloc] initWithObjects:emailAddr,safeTextString,safeBodyString, nil];
+    return emailContent;
+    
+}
+
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

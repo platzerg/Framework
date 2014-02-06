@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PWLocationViewController : UIViewController
+@interface PWLocationViewController : UIViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *startMantle;
 - (IBAction)startMantle:(id)sender;
 

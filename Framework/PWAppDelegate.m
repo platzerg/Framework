@@ -9,8 +9,17 @@
 #import "PWAppDelegate.h"
 #import <TSMessage.h>
 
+@interface PWAppDelegate ()
+
+@end
+
 
 @implementation PWAppDelegate
+{
+    Reachability *reachability;
+}
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -35,6 +44,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+     [self setUpRechability];
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
@@ -47,5 +57,56 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+-(void)setUpRechability
+{
+    NSString* status;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
+    
+    reachability = [Reachability reachabilityForInternetConnection];
+    [reachability startNotifier];
+    NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
+    
+    if(remoteHostStatus == NotReachable)
+    {
+        status = [NSString stringWithFormat:@"NO CONNECTION"];
+    }
+    else if(remoteHostStatus == ReachableViaWiFi)
+    {
+        status = [NSString stringWithFormat:@"WLAN"];
+    }
+    else if (remoteHostStatus == ReachableViaWWAN)
+    {
+        status = [NSString stringWithFormat:@"3G"];
+    }
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Net avail" message:status delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+
+}
+
+- (void) handleNetworkChange:(NSNotification *)notice
+{
+    NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
+    NSString* status;
+    
+    if (remoteHostStatus == NotReachable)
+    {
+        status = [NSString stringWithFormat:@"NO CONNECTION"];
+    }
+    else if (remoteHostStatus == ReachableViaWiFi)
+    {
+       status = [NSString stringWithFormat:@"WLAN"];
+    }
+    else if (remoteHostStatus == ReachableViaWWAN)
+    {
+        status = [NSString stringWithFormat:@"3G"];
+    }
+    
+   
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Net avail" message:status delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+    
+}
+
 
 @end

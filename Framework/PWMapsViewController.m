@@ -7,14 +7,14 @@
 //
 
 #import "PWMapsViewController.h"
+#import "PWManager.h"
 
 @interface PWMapsViewController ()
-
 @end
 
 @implementation PWMapsViewController
 
-@synthesize locationManager;
+@synthesize locationManager, biergarten;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -208,8 +208,24 @@
             // NSString* d = [NSString stringWithFormat:@"%@",location.biergarten ];
             // [TSMessage showNotificationWithTitle:@"INFO" subtitle:d type:TSMessageNotificationTypeSuccess];
             
-            NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
-            [location.mapItem openInMapsWithLaunchOptions:launchOptions];
+            /*
+            UIViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OtherViewControllerId"];
+            MyCustomSegue *segue = [[MyCustomSegue alloc] initWithIdentifier:@"" source:self destination:toViewController];
+            [self prepareForSegue:segue sender:sender];
+            [segue perform];
+             
+             PWDetailsViewController *cvc = [[PWDetailsViewController alloc] init];
+             [self.navigationController pushViewController:cvc animated:YES];
+
+            */
+            
+            self.biergarten = location.biergarten;
+            [self performSegueWithIdentifier:@"PWDetail" sender:control];
+            
+            // [[PWManager sharedManager] setCurrentBiergarten:self.biergarten];
+            
+           // NSDictionary *launchOptions = @{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving};
+           // [location.mapItem openInMapsWithLaunchOptions:launchOptions];
         }
         
     }
@@ -224,6 +240,14 @@
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"PWDetail"])
+    {
+        PWDetailsViewController *details = [segue destinationViewController];
+        details.biergarten = biergarten;
+    }
+}
 
 #pragma loadBiergarten
 - (IBAction)loadBiergarten:(id)sender {

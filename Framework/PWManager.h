@@ -17,17 +17,19 @@
 
 @property (nonatomic, retain) NSString *value;
 
-+ (id)sharedManagerGpl;
-+ (id)sharedGCDManager;
 + (instancetype)sharedManager;
 
 @property (nonatomic, strong, readonly) CLLocation *currentLocation;
 @property (nonatomic, strong, readonly) NSArray *hourlyForecast;
 
+@property (nonatomic, strong, readonly) PWBiergarten *currentBiergarten;
+
 
 - (void)checkLocationServiceEnabled;
 
 - (void)findCurrentLocation;
+
+- (void)setCurrentBiergarten:(PWBiergarten *)currentBiergarten;
 
 
 @end
