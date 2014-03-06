@@ -9,8 +9,8 @@
 #import "PWNetworkViewController.h"
 #import <LBBlurredImage/UIImageView+LBBlurredImage.h>
 #import "WXManager.h"
-#import <SystemConfiguration/CaptiveNetwork.h>
 #import "PWAppDelegate.h"
+#import "PWReachability.h"
 
 @interface PWNetworkViewController ()
 @property (nonatomic, strong) UIImageView *backgroundImageView;
@@ -27,6 +27,13 @@
 
 static const NSString *kezMobileURL =@"https://isjp7dbz.in.audi.vwg/kezmobile";
 static const NSString *kezMobileHRURL = @"https://isjkpdbz.in.audi.vwg/kezmobile";
+NSString *audiWLAN = @"platzerworld";
+
+NetworkStatus lastNetworkStatus;
+NetworkStatus currentNetworkStatus;
+NSString* lastWifiSSID;
+KEZNetworkStatus networkDirection;
+PWReachability *myReachability;
 
 - (id)init {
     if (self = [super init]) {
@@ -35,13 +42,15 @@ static const NSString *kezMobileHRURL = @"https://isjkpdbz.in.audi.vwg/kezmobile
         
         _dailyFormatter = [[NSDateFormatter alloc] init];
         _dailyFormatter.dateFormat = @"EEEE";
+        
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
+    myReachability = [[PWReachability alloc] init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeDismissed:) name:UIKeyboardWillHideNotification object:nil];
     /*
@@ -343,8 +352,6 @@ static const NSString *kezMobileHRURL = @"https://isjkpdbz.in.audi.vwg/kezmobile
 }
 
 - (IBAction)stopNetworkNotification:(id)sender {
-    NSString *currentSSID =  [self currentWifiSSID];
-    
     PWAppDelegate* appDel = (PWAppDelegate *) [[UIApplication sharedApplication] delegate];
     [appDel description];
     
@@ -354,19 +361,6 @@ static const NSString *kezMobileHRURL = @"https://isjkpdbz.in.audi.vwg/kezmobile
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"kSendMailHelpDesk" object:urlString]];
 }
 
-- (NSString *)currentWifiSSID {
-    
-    NSString *ssid = nil;
-    NSArray *ifs = (__bridge  id)CNCopySupportedInterfaces();
-    for (NSString *ifnam in ifs) {
-        NSDictionary *info = (__bridge  id)CNCopyCurrentNetworkInfo((__bridge  CFStringRef)ifnam);
-        // NSLog(@"info %@",[info valueForKey:@"SSID"]);
-        if (info[@"SSID"]) {
-            ssid = [info valueForKey:@"SSID"];
-        }
-    }
-    return ssid;
-}
 
 #pragma mark - Keyboard notifications
 // This method handles the animation of the view when the keyboard is displayed
@@ -455,6 +449,24 @@ static const NSString *kezMobileHRURL = @"https://isjkpdbz.in.audi.vwg/kezmobile
     NSArray *emailContent = [[NSArray alloc] initWithObjects:emailAddr,safeTextString,safeBodyString, nil];
     return emailContent;
     
+}
+- (IBAction)startNetworkObserver:(id)sender {
+    [myReachability startNetworkObserver];
+}
+
+- (IBAction)stopNetworkObserver:(id)sender {
+     [myReachability stopNetworkObserver];
+}
+
+- (IBAction)testWiFi:(id)sender {
+    [myReachability testWiFi];
+}
+
+- (BOOL) canExecuteRequestWithCheckWiFiChanged
+{
+    [myReachability checkWLANWithSSID:[myReachability getCurrentWifiSSID]];
+    BOOL canExecute = NO;
+    return canExecute;
 }
 
 

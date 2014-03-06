@@ -14,16 +14,7 @@
 
 @implementation PWMapsViewController
 
-@synthesize locationManager, biergarten;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize locationManager, biergarten, mapView;
 
 - (void)viewDidLoad
 {
@@ -47,10 +38,8 @@
     
     // 2
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 5.5*METERS_PER_MILE, 5.5*METERS_PER_MILE);
-    
     // 3
-    [_mapView setRegion:viewRegion animated:YES];
-    
+    [mapView setRegion:viewRegion animated:YES];
 }
 
 - (void)viewDidUnload {
@@ -67,10 +56,10 @@
 
 // Add new method above refreshTapped
 - (void)plotCrimePositions:(NSData *)responseData {
-    for (id<MKAnnotation> annotation in _mapView.annotations) {
+    for (id<MKAnnotation> annotation in mapView.annotations) {
         if ([annotation isKindOfClass:[PWMyLocation class]])
         {
-            [_mapView removeAnnotation:annotation];
+            [mapView removeAnnotation:annotation];
         }
         
     }
@@ -99,9 +88,10 @@
                                                         address:biergarten.strasse
                                                         coordinate:CLLocationCoordinate2DMake(latitudeDezimal.doubleValue, longitudeDezimal.doubleValue)] ;
         annotation.biergarten = biergarten;
-        [_mapView addAnnotation:annotation];
+        [mapView addAnnotation:annotation];
 	}
     
+    /*
     // Default Location is Aumeister
     NSString * crimeDescription = @"Aumeister";
     NSString * address = @"Sondermeierstraße 1, 80939 München";
@@ -111,7 +101,7 @@
     coordinate.longitude = 11.620306;
     PWMyLocation *annotation = [[PWMyLocation alloc] initWithName:crimeDescription address:address coordinate:coordinate] ;
     [_mapView addAnnotation:annotation];
-    
+    */
 }
 
 
@@ -129,7 +119,7 @@
 
     if ([annotation isKindOfClass:[PWMyLocation class]]) {
         
-        MKAnnotationView *annotationView = (MKAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        MKAnnotationView *annotationView = (MKAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             annotationView.enabled = YES;
@@ -159,11 +149,11 @@
         return annotationView;
     }else if([annotation isKindOfClass:[RegionAnnotation class]]) {
 		RegionAnnotation *currentAnnotation = (RegionAnnotation *)annotation;
-		RegionAnnotationView *regionView = (RegionAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:@"RegionAnnotation"];
+		RegionAnnotationView *regionView = (RegionAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"RegionAnnotation"];
 		
 		if (!regionView) {
 			regionView = [[RegionAnnotationView alloc] initWithAnnotation:currentAnnotation withIdentifier:@"RegionAnnotation"];
-			regionView.map = _mapView;
+			regionView.map = mapView;
 			
             // Create a button for the left callout accessory view of each annotation to remove the annotation and region being monitored.
 			UIButton *removeRegionButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -196,7 +186,7 @@
         if (leftButton.tag == 1) {
             MKAnnotationView *regionView = (MKAnnotationView *)view;
             if ([regionView.annotation isKindOfClass:[PWMyLocation class]]) {
-                [_mapView removeAnnotation:regionView.annotation];
+                [mapView removeAnnotation:regionView.annotation];
             }else {
                 NSLog(@"TEST: %@", regionView.annotation);
             }
@@ -236,7 +226,7 @@
         // Stop monitoring the region, remove the radius overlay, and finally remove the annotation from the map.
         [locationManager stopMonitoringForRegion:regionAnnotation.region];
         [regionView removeRadiusOverlay];
-        [_mapView removeAnnotation:regionAnnotation];
+        [mapView removeAnnotation:regionAnnotation];
     }
 }
 
@@ -290,9 +280,9 @@
 
 #pragma deleteAllBiergarten
 - (IBAction)deleteAllBiergarten:(id)sender {
-    for (id<MKAnnotation> annotation in _mapView.annotations) {
+    for (id<MKAnnotation> annotation in mapView.annotations) {
         if ([annotation isKindOfClass:[PWMyLocation class]]) {
-            [_mapView removeAnnotation:annotation];
+            [mapView removeAnnotation:annotation];
         }else {
             NSLog(@"TEST: %@", annotation);
         }
@@ -443,17 +433,17 @@
     NSLog(@"addRegion");
     if ([CLLocationManager regionMonitoringAvailable]) {
 		// Create a new region based on the center of the map view.
-		CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(_mapView.centerCoordinate.latitude, _mapView.centerCoordinate.longitude);
+		CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(mapView.centerCoordinate.latitude, mapView.centerCoordinate.longitude);
 		CLRegion *newRegion = [[CLRegion alloc] initCircularRegionWithCenter:coord
 																	  radius:6000.0
-																  identifier:[NSString stringWithFormat:@"%f, %f", _mapView.centerCoordinate.latitude, _mapView.centerCoordinate.longitude]];
+																  identifier:[NSString stringWithFormat:@"%f, %f", mapView.centerCoordinate.latitude, mapView.centerCoordinate.longitude]];
 		
 		// Create an annotation to show where the region is located on the map.
 		RegionAnnotation *myRegionAnnotation = [[RegionAnnotation alloc] initWithCLRegion:newRegion];
 		myRegionAnnotation.coordinate = newRegion.center;
 		myRegionAnnotation.radius = newRegion.radius;
 		
-		[_mapView addAnnotation:myRegionAnnotation];
+		[mapView addAnnotation:myRegionAnnotation];
 		
 		// Start monitoring the newly created region.
 		[locationManager startMonitoringForRegion:newRegion desiredAccuracy:kCLLocationAccuracyBest];
@@ -462,6 +452,8 @@
 		NSLog(@"Region monitoring is not available.");
 	}
 }
+
+
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
 	if([overlay isKindOfClass:[MKCircle class]]) {
@@ -506,9 +498,57 @@
 	// Work around a bug in MapKit where user location is not initially zoomed to.
 	if (oldLocation == nil) {
 		// Zoom to the current user location.
-		MKCoordinateRegion userLocation = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 1500.0, 1500.0);
-		[_mapView setRegion:userLocation animated:YES];
+		//MKCoordinateRegion userLocation = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 1500.0, 1500.0);
+		[mapView setRegion:[self getMKCoordinateRegionWithLocation:newLocation] animated:YES];
 	}
+}
+
+- (MKCoordinateRegion) getMKCoordinateRegionWithLocation: (CLLocation *)newLocation
+{
+    CLLocationCoordinate2D zoomLocation;
+    zoomLocation.latitude = newLocation.coordinate.latitude;
+    zoomLocation.longitude= newLocation.coordinate.longitude;
+    
+    // 2
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(zoomLocation, 5000, 5000);
+    
+    return region;
+}
+
+- (IBAction)zoomIn:(id)sender
+{
+    MKCoordinateRegion region = mapView.region;
+    
+    CLLocationCoordinate2D zoomLocation;
+    zoomLocation.latitude = region.center.latitude;
+    zoomLocation.longitude= region.center.longitude;
+    
+    double laa = region.span.latitudeDelta;
+    double loo = region.span.longitudeDelta;
+    
+    double la = region.span.latitudeDelta*METERS_PER_MILE;
+    double lo = region.span.longitudeDelta*METERS_PER_MILE;
+    
+    MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(zoomLocation,
+             1500,  1500);
+    
+    
+    [mapView setRegion:newRegion animated:YES];
+}
+
+- (IBAction)zoomOut:(id)sender
+{
+    MKCoordinateRegion region = mapView.region;
+    
+    CLLocationCoordinate2D zoomLocation;
+    zoomLocation.latitude = region.center.latitude;
+    zoomLocation.longitude= region.center.longitude;
+    
+    MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(zoomLocation,
+                                                                      6000,  6000);
+    
+    [mapView setRegion:newRegion animated:YES];
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

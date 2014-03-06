@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Reachability.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface PWAppDelegate : UIResponder <UIApplicationDelegate>
 

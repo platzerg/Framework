@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -68,6 +68,36 @@
                                 </state>
                                 <connections>
                                     <action selector="stopNetworkNotification:" destination="nZb-o3-iwN" eventType="touchUpInside" id="Bxx-uq-8Ij"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNe-eW-HTV">
+                                <rect key="frame" x="20" y="194" width="160" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="start Network Observer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startNetworkObserver:" destination="nZb-o3-iwN" eventType="touchUpInside" id="AiL-es-GXE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UP2-5g-fwy">
+                                <rect key="frame" x="25" y="232" width="159" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="stop Network Observer">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopNetworkObserver:" destination="nZb-o3-iwN" eventType="touchUpInside" id="gsD-ye-ZEf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wb6-c2-FCd">
+                                <rect key="frame" x="25" y="270" width="74" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="test WLAN">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="testWiFi:" destination="nZb-o3-iwN" eventType="touchUpInside" id="YPf-S2-0ps"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -321,6 +351,16 @@
                                             <action selector="addRegion:" destination="HDA-fs-lSA" id="Vkb-hZ-FST"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem title="IN" id="PFp-LT-Z4h">
+                                        <connections>
+                                            <action selector="zoomIn:" destination="HDA-fs-lSA" id="1A0-nM-cWM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="OUT" id="5As-Zr-jOl">
+                                        <connections>
+                                            <action selector="zoomOut:" destination="HDA-fs-lSA" id="6py-m9-cqM"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AiW-y4-P96">
@@ -466,6 +506,445 @@
             </objects>
             <point key="canvasLocation" x="3260" y="2095"/>
         </scene>
+        <!--Navigation Controller - Facebook-->
+        <scene sceneID="EM6-Jc-i0K">
+            <objects>
+                <navigationController title="Facebook" definesPresentationContext="YES" id="oc2-of-e6m" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Facebook" image="weather-broken.png" id="Xuz-a4-8aC"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ANc-ZS-uG1">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="93l-ys-j3R" kind="relationship" relationship="rootViewController" id="IQK-nH-ufZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F8c-HO-p3D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="668" y="-3254"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="0uw-5T-IFF">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bar-MS-nFA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="meO-bU-it2" customClass="PWFBFQLViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cb1-Fa-qSB"/>
+                        <viewControllerLayoutGuide type="bottom" id="qsu-DP-Vba"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VdA-JT-CNi">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjX-wR-MZh">
+                                <rect key="frame" x="313" y="88" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="query">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="queryButtonAction:" destination="meO-bU-it2" eventType="touchUpInside" id="g4u-VQ-Eu0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7S-37-blT">
+                                <rect key="frame" x="445" y="88" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="multiQuery">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="multiQueryButtonAction:" destination="meO-bU-it2" eventType="touchUpInside" id="KGy-bJ-JmF"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vaF-Eq-S86">
+                                <rect key="frame" x="30" y="132" width="974" height="538"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UMp-ov-a8F"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="multiQueryButton" destination="F7S-37-blT" id="VKN-0b-EfQ"/>
+                        <outlet property="queryButton" destination="DjX-wR-MZh" id="XQC-We-1Rf"/>
+                        <outlet property="textView" destination="vaF-Eq-S86" id="KrT-cr-pfv"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1840" y="-3865"/>
+        </scene>
+        <!--Api View Controller-->
+        <scene sceneID="XAj-fL-n66">
+            <objects>
+                <viewController id="gDh-ea-VsA" customClass="PWApiViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mxg-g1-cHf"/>
+                        <viewControllerLayoutGuide type="bottom" id="CNm-MR-O2Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mzg-c9-JyV">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlP-KQ-0wD">
+                                <rect key="frame" x="758" y="93" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Request">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonRequestClickHandler:" destination="gDh-ea-VsA" eventType="touchUpInside" id="FZQ-Nx-yxs"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Bq-ng-gbn">
+                                <rect key="frame" x="20" y="142" width="984" height="556"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xwT-qj-mAt">
+                                <rect key="frame" x="235" y="93" width="507" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ww6-fg-yru"/>
+                    <connections>
+                        <outlet property="buttonRequest" destination="wlP-KQ-0wD" id="gAs-xu-bIt"/>
+                        <outlet property="textObjectID" destination="xwT-qj-mAt" id="fvG-5u-uh6"/>
+                        <outlet property="textOutput" destination="6Bq-ng-gbn" id="Eik-2M-RsD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L5m-9w-7Fh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2868" y="-4823"/>
+        </scene>
+        <!--Facebook View Controller - Facebook-->
+        <scene sceneID="fH6-Iq-eFZ">
+            <objects>
+                <viewController title="Facebook" id="93l-ys-j3R" customClass="PWFacebookViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q3S-ir-8wM"/>
+                        <viewControllerLayoutGuide type="bottom" id="EhL-rg-tmI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tml-2b-IPH">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVM-Dz-9pu">
+                                <rect key="frame" x="712" y="369" width="74" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pick Place">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pickPlaceClick:" destination="93l-ys-j3R" eventType="touchUpInside" id="5CU-nr-7PG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sAV-Km-9mh">
+                                <rect key="frame" x="524" y="369" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Post Photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postPhotoClick:" destination="93l-ys-j3R" eventType="touchUpInside" id="fqH-gi-pbj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Mv-H5-B0i">
+                                <rect key="frame" x="299" y="369" width="132" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pick Some Friends">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pickFriendsClick:" destination="93l-ys-j3R" eventType="touchUpInside" id="L9Y-8g-O4o"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="test" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="U1F-dR-YO0">
+                                <rect key="frame" x="384" y="295" width="288" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jd7-k1-ceU">
+                                <rect key="frame" x="-77" y="369" width="326" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Post FB">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="postStatusUpdateClick:" destination="93l-ys-j3R" eventType="touchUpInside" id="W7n-Gz-BiD"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sQ9-SA-oxS" customClass="FBProfilePictureView">
+                                <rect key="frame" x="428" y="73" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kl-dW-IdM">
+                                <rect key="frame" x="59" y="398" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Post 1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doPost1:" destination="93l-ys-j3R" eventType="touchUpInside" id="ph9-8I-PMx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noR-d4-qFC">
+                                <rect key="frame" x="59" y="424" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Post 2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doPost2:" destination="93l-ys-j3R" eventType="touchUpInside" id="L5b-Zu-YnL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMT-8h-102">
+                                <rect key="frame" x="59" y="462" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Post 3">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doPost3:" destination="93l-ys-j3R" eventType="touchUpInside" id="Xif-v0-oxs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3C-G8-WfN">
+                                <rect key="frame" x="59" y="523" width="180" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="shareLinkWithShareDialog">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doShareLinkWithShareDialog:" destination="93l-ys-j3R" eventType="touchUpInside" id="YAA-xO-dSO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7A-DK-Sfd">
+                                <rect key="frame" x="58" y="561" width="239" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="postStatusUpdateWithShareDialog">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doPostStatusUpdateWithShareDialog:" destination="93l-ys-j3R" eventType="touchUpInside" id="bok-dn-n3p"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntU-xV-YqK">
+                                <rect key="frame" x="59" y="606" width="157" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ShareLinkWithAPICalls">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doShareLinkWithAPICalls:" destination="93l-ys-j3R" eventType="touchUpInside" id="d3d-Gj-8bE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1i-fl-Pb4">
+                                <rect key="frame" x="56" y="649" width="183" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="StatusUpdateWithAPICalls">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doStatusUpdateWithAPICalls:" destination="93l-ys-j3R" eventType="touchUpInside" id="nGO-WE-Ejg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJB-L9-OKG">
+                                <rect key="frame" x="712" y="424" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="PlacePickerSample">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="UlH-q3-Opi" kind="push" id="L7G-Hr-C6f"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjb-pO-Zrq">
+                                <rect key="frame" x="299" y="398" width="143" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="FriendViewController">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="wLf-Fl-Lcj" kind="push" identifier="fbfriendpicker" id="Mqq-Hu-2Wk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rp-Sg-fFg">
+                                <rect key="frame" x="712" y="523" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Facebook Api">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="gDh-ea-VsA" kind="push" id="JYq-lU-rrK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JUO-g1-i4T">
+                                <rect key="frame" x="712" y="561" width="101" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Facebook FQL">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="meO-bU-it2" kind="push" id="huG-uX-fif"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Yr4-Er-JhB"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="buttonPickFriends" destination="7Mv-H5-B0i" id="Dmp-Pk-evR"/>
+                        <outlet property="buttonPickPlace" destination="EVM-Dz-9pu" id="qsd-Av-Hm5"/>
+                        <outlet property="buttonPostPhoto" destination="sAV-Km-9mh" id="1uw-UL-9bi"/>
+                        <outlet property="buttonPostStatus" destination="jd7-k1-ceU" id="5oH-4u-ixT"/>
+                        <outlet property="labelFirstName" destination="U1F-dR-YO0" id="qrI-9I-q1g"/>
+                        <outlet property="profilePic" destination="sQ9-SA-oxS" id="Atp-ag-m90"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rIo-eA-Wuz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1888" y="-2993"/>
+        </scene>
+        <!--Fried Picker View Controller-->
+        <scene sceneID="L2f-it-2my">
+            <objects>
+                <viewController id="wLf-Fl-Lcj" customClass="PWFBFriedPickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="syQ-XE-Rd2"/>
+                        <viewControllerLayoutGuide type="bottom" id="hr7-2b-a2h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AUK-EJ-3NU">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QV0-qr-RUa">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wLf-Fl-Lcj" id="r8f-fK-oRR"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="M81-dj-bOi">
+                                <rect key="frame" x="0.0" y="65" width="1024" height="467"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wLf-Fl-Lcj" id="4lF-94-9Gq"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIh-hJ-wG4">
+                                <rect key="frame" x="84" y="555" width="52" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="nearme">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="UlH-q3-Opi" kind="push" identifier="showLocationForFriend" id="8N1-zu-KxJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8PT-SQ-z5I"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="0ek-Zk-FNa" id="vGh-VS-845"/>
+                        <outlet property="tableView" destination="M81-dj-bOi" id="JdU-Ia-IQM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BQF-yk-ZJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="0ek-Zk-FNa">
+                    <connections>
+                        <outlet property="delegate" destination="wLf-Fl-Lcj" id="Ule-iS-V0o"/>
+                        <outlet property="searchBar" destination="QV0-qr-RUa" id="FgK-Gg-GRP"/>
+                        <outlet property="searchContentsController" destination="wLf-Fl-Lcj" id="zfH-Kb-dhB"/>
+                        <outlet property="searchResultsDataSource" destination="wLf-Fl-Lcj" id="fik-Tw-SKJ"/>
+                        <outlet property="searchResultsDelegate" destination="wLf-Fl-Lcj" id="No8-yX-zPW"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="3004" y="-3865"/>
+        </scene>
+        <!--Place Picker View Controller-->
+        <scene sceneID="ijb-Eh-bUq">
+            <objects>
+                <viewController id="UlH-q3-Opi" customClass="PWFBPlacePickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iqT-ry-bFd"/>
+                        <viewControllerLayoutGuide type="bottom" id="0as-wD-Td1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dgY-wv-4dk">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="MKI-Y8-4MR">
+                                <rect key="frame" x="0.0" y="67" width="1024" height="701"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="UlH-q3-Opi" id="fBm-fs-Kb5"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tV9-v0-03j">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="UlH-q3-Opi" id="yLW-ec-VRK"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7WL-Dj-VP1"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="mRt-Dl-e7V" id="R1Z-MI-Iuo"/>
+                        <outlet property="tableView" destination="MKI-Y8-4MR" id="SEa-44-MW7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NBU-6a-l3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="mRt-Dl-e7V">
+                    <connections>
+                        <outlet property="delegate" destination="UlH-q3-Opi" id="QhP-At-gfE"/>
+                        <outlet property="searchBar" destination="tV9-v0-03j" id="giT-83-Z4g"/>
+                        <outlet property="searchContentsController" destination="UlH-q3-Opi" id="MWA-A2-VZE"/>
+                        <outlet property="searchResultsDataSource" destination="UlH-q3-Opi" id="2lj-em-HWZ"/>
+                        <outlet property="searchResultsDelegate" destination="UlH-q3-Opi" id="i2l-2t-ECC"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="3022" y="-2986"/>
+        </scene>
         <!--Navigation Controller - Network-->
         <scene sceneID="ESa-FZ-X4X">
             <objects>
@@ -487,6 +966,7 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5Fv-0o-6o1"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -498,19 +978,24 @@
                         <segue destination="4jg-ix-00U" kind="relationship" relationship="viewControllers" id="9GE-1p-BdL"/>
                         <segue destination="fti-zM-vlr" kind="relationship" relationship="viewControllers" id="K6K-4R-aAT"/>
                         <segue destination="Rkj-5o-2Wi" kind="relationship" relationship="viewControllers" id="AJW-Pq-kxh"/>
+                        <segue destination="oc2-of-e6m" kind="relationship" relationship="viewControllers" id="gBt-9c-lhJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1011" y="42"/>
+            <point key="canvasLocation" x="-1123" y="-1022"/>
         </scene>
     </scenes>
     <resources>
         <image name="second" width="30" height="30"/>
+        <image name="weather-broken.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="L7G-Hr-C6f"/>
+    </inferredMetricsTieBreakers>
 </document>

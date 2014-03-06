@@ -36,5 +36,7 @@
 - (IBAction)deleteAllBiergarten:(id)sender;
 - (IBAction)showGooglePlaces:(id)sender;
 - (IBAction)addRegion:(id)sender;
+- (IBAction)zoomIn:(id)sender;
 
+- (IBAction)zoomOut:(id)sender;
 @end

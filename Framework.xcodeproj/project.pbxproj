@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B00D9E918C5D47E00E47229 /* PWFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B00D9E818C5D47E00E47229 /* PWFacebookViewController.m */; };
+		0B00D9EF18C5E17900E47229 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B00D9EB18C5E17900E47229 /* Icon-72.png */; };
+		0B00D9F018C5E17900E47229 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B00D9EC18C5E17900E47229 /* Icon-72@2x.png */; };
+		0B00D9F118C5E17900E47229 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B00D9ED18C5E17900E47229 /* Icon.png */; };
+		0B00D9F218C5E17900E47229 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B00D9EE18C5E17900E47229 /* Icon@2x.png */; };
 		0B1362C318A27A4C0079D534 /* PWBiergarten.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1362C218A27A4C0079D534 /* PWBiergarten.m */; };
 		0B1362C618A27DE70079D534 /* PWBiergartenClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1362C518A27DE70079D534 /* PWBiergartenClient.m */; };
-		0B39F2FE189E403C0009A885 /* command.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B39F2FD189E403C0009A885 /* command.json */; };
+		0B234CA218C779F900AC1DAB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B234CA118C779F900AC1DAB /* Social.framework */; };
+		0B234CA618C78A0100AC1DAB /* PWFBPlacePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B234CA418C78A0100AC1DAB /* PWFBPlacePickerViewController.m */; };
+		0B234CAA18C79BDE00AC1DAB /* PWFBFriedPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B234CA918C79BDE00AC1DAB /* PWFBFriedPickerViewController.m */; };
+		0B26D93218A2BFBB009CAA0F /* PWDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B26D93118A2BFBB009CAA0F /* PWDetailsViewController.m */; };
 		0B39F301189E42B20009A885 /* PWMyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B39F300189E42B20009A885 /* PWMyLocation.m */; };
 		0B39F305189E48CC0009A885 /* arrest.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B39F304189E48CC0009A885 /* arrest.png */; };
 		0B60AF24189FF4D800F2002A /* RegionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B60AF21189FF4D800F2002A /* RegionAnnotation.m */; };
@@ -49,7 +57,6 @@
 		0B81F73E189CDDCD00E273A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B81F73D189CDDCD00E273A6 /* Foundation.framework */; };
 		0B81F740189CDDCD00E273A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B81F73F189CDDCD00E273A6 /* CoreGraphics.framework */; };
 		0B81F742189CDDCD00E273A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B81F741189CDDCD00E273A6 /* UIKit.framework */; };
-		0B81F748189CDDCD00E273A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B81F746189CDDCD00E273A6 /* InfoPlist.strings */; };
 		0B81F74A189CDDCD00E273A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B81F749189CDDCD00E273A6 /* main.m */; };
 		0B81F74E189CDDCD00E273A6 /* PWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B81F74D189CDDCD00E273A6 /* PWAppDelegate.m */; };
 		0B81F751189CDDCD00E273A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B81F74F189CDDCD00E273A6 /* Main.storyboard */; };
@@ -57,7 +64,6 @@
 		0B81F760189CDDCD00E273A6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B81F75F189CDDCD00E273A6 /* XCTest.framework */; };
 		0B81F761189CDDCD00E273A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B81F73D189CDDCD00E273A6 /* Foundation.framework */; };
 		0B81F762189CDDCD00E273A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B81F741189CDDCD00E273A6 /* UIKit.framework */; };
-		0B81F76A189CDDCD00E273A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B81F768189CDDCD00E273A6 /* InfoPlist.strings */; };
 		0B81F76C189CDDCD00E273A6 /* FrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B81F76B189CDDCD00E273A6 /* FrameworkTests.m */; };
 		0B81F777189CE9C900E273A6 /* PWNetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B81F776189CE9C900E273A6 /* PWNetworkViewController.m */; };
 		0B81F77A189CE9DB00E273A6 /* PWLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B81F779189CE9DB00E273A6 /* PWLocationViewController.m */; };
@@ -68,6 +74,9 @@
 		0B81F790189D05F200E273A6 /* PWNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B81F78F189D05F200E273A6 /* PWNetworkManager.m */; };
 		0BAE4C92189E3689006C8526 /* PWMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE4C91189E3689006C8526 /* PWMapsViewController.m */; };
 		0BAE4C94189E3A92006C8526 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAE4C93189E3A92006C8526 /* MapKit.framework */; };
+		0BB0D4B018C8846A00418A76 /* PWApiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB0D4AF18C8846A00418A76 /* PWApiViewController.m */; };
+		0BB0D4B318C88FE500418A76 /* PWFBFQLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB0D4B218C88FE500418A76 /* PWFBFQLViewController.m */; };
+		0BBB952A18A3E4D60068313B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBB952918A3E4D60068313B /* SystemConfiguration.framework */; };
 		48DE32482C0245208C673AEC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD27263424D74183857564F7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -82,11 +91,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B00D9E718C5D47E00E47229 /* PWFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWFacebookViewController.h; sourceTree = "<group>"; };
+		0B00D9E818C5D47E00E47229 /* PWFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWFacebookViewController.m; sourceTree = "<group>"; };
+		0B00D9EB18C5E17900E47229 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		0B00D9EC18C5E17900E47229 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		0B00D9ED18C5E17900E47229 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		0B00D9EE18C5E17900E47229 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		0B1362C118A27A4C0079D534 /* PWBiergarten.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWBiergarten.h; sourceTree = "<group>"; };
 		0B1362C218A27A4C0079D534 /* PWBiergarten.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWBiergarten.m; sourceTree = "<group>"; };
 		0B1362C418A27DE70079D534 /* PWBiergartenClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWBiergartenClient.h; sourceTree = "<group>"; };
 		0B1362C518A27DE70079D534 /* PWBiergartenClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWBiergartenClient.m; sourceTree = "<group>"; };
-		0B39F2FD189E403C0009A885 /* command.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = command.json; sourceTree = "<group>"; };
+		0B234CA118C779F900AC1DAB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		0B234CA318C78A0100AC1DAB /* PWFBPlacePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWFBPlacePickerViewController.h; sourceTree = "<group>"; };
+		0B234CA418C78A0100AC1DAB /* PWFBPlacePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWFBPlacePickerViewController.m; sourceTree = "<group>"; };
+		0B234CA818C79BDE00AC1DAB /* PWFBFriedPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWFBFriedPickerViewController.h; sourceTree = "<group>"; };
+		0B234CA918C79BDE00AC1DAB /* PWFBFriedPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWFBFriedPickerViewController.m; sourceTree = "<group>"; };
+		0B26D93018A2BFBB009CAA0F /* PWDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDetailsViewController.h; sourceTree = "<group>"; };
+		0B26D93118A2BFBB009CAA0F /* PWDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDetailsViewController.m; sourceTree = "<group>"; };
 		0B39F2FF189E42B20009A885 /* PWMyLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMyLocation.h; sourceTree = "<group>"; };
 		0B39F300189E42B20009A885 /* PWMyLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMyLocation.m; sourceTree = "<group>"; };
 		0B39F304189E48CC0009A885 /* arrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrest.png; sourceTree = "<group>"; };
@@ -135,7 +156,6 @@
 		0B81F73F189CDDCD00E273A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0B81F741189CDDCD00E273A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0B81F745189CDDCD00E273A6 /* Framework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Framework-Info.plist"; sourceTree = "<group>"; };
-		0B81F747189CDDCD00E273A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0B81F749189CDDCD00E273A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0B81F74B189CDDCD00E273A6 /* Framework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Framework-Prefix.pch"; sourceTree = "<group>"; };
 		0B81F74C189CDDCD00E273A6 /* PWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PWAppDelegate.h; sourceTree = "<group>"; };
@@ -145,7 +165,6 @@
 		0B81F75E189CDDCD00E273A6 /* FrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B81F75F189CDDCD00E273A6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0B81F767189CDDCD00E273A6 /* FrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FrameworkTests-Info.plist"; sourceTree = "<group>"; };
-		0B81F769189CDDCD00E273A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0B81F76B189CDDCD00E273A6 /* FrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FrameworkTests.m; sourceTree = "<group>"; };
 		0B81F775189CE9C900E273A6 /* PWNetworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWNetworkViewController.h; sourceTree = "<group>"; };
 		0B81F776189CE9C900E273A6 /* PWNetworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWNetworkViewController.m; sourceTree = "<group>"; };
@@ -163,6 +182,11 @@
 		0BAE4C90189E3689006C8526 /* PWMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMapsViewController.h; sourceTree = "<group>"; };
 		0BAE4C91189E3689006C8526 /* PWMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMapsViewController.m; sourceTree = "<group>"; };
 		0BAE4C93189E3A92006C8526 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0BB0D4AE18C8846A00418A76 /* PWApiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWApiViewController.h; sourceTree = "<group>"; };
+		0BB0D4AF18C8846A00418A76 /* PWApiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWApiViewController.m; sourceTree = "<group>"; };
+		0BB0D4B118C88FE500418A76 /* PWFBFQLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWFBFQLViewController.h; sourceTree = "<group>"; };
+		0BB0D4B218C88FE500418A76 /* PWFBFQLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWFBFQLViewController.m; sourceTree = "<group>"; };
+		0BBB952918A3E4D60068313B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AD27263424D74183857564F7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEBF0155313B4ACD94353042 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +196,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B234CA218C779F900AC1DAB /* Social.framework in Frameworks */,
+				0BBB952A18A3E4D60068313B /* SystemConfiguration.framework in Frameworks */,
 				0BAE4C94189E3A92006C8526 /* MapKit.framework in Frameworks */,
 				0B81F783189CF3C000E273A6 /* CoreLocation.framework in Frameworks */,
 				0B81F740189CDDCD00E273A6 /* CoreGraphics.framework in Frameworks */,
@@ -194,6 +220,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B00D9E618C5D46100E47229 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				0B00D9E718C5D47E00E47229 /* PWFacebookViewController.h */,
+				0B00D9E818C5D47E00E47229 /* PWFacebookViewController.m */,
+				0B234CA318C78A0100AC1DAB /* PWFBPlacePickerViewController.h */,
+				0B234CA418C78A0100AC1DAB /* PWFBPlacePickerViewController.m */,
+				0B234CA818C79BDE00AC1DAB /* PWFBFriedPickerViewController.h */,
+				0B234CA918C79BDE00AC1DAB /* PWFBFriedPickerViewController.m */,
+				0BB0D4AE18C8846A00418A76 /* PWApiViewController.h */,
+				0BB0D4AF18C8846A00418A76 /* PWApiViewController.m */,
+				0BB0D4B118C88FE500418A76 /* PWFBFQLViewController.h */,
+				0BB0D4B218C88FE500418A76 /* PWFBFQLViewController.m */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
+		0B00D9EA18C5E16900E47229 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				0B00D9EB18C5E17900E47229 /* Icon-72.png */,
+				0B00D9EC18C5E17900E47229 /* Icon-72@2x.png */,
+				0B00D9ED18C5E17900E47229 /* Icon.png */,
+				0B00D9EE18C5E17900E47229 /* Icon@2x.png */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
 		0B75201418A12BC400C22D82 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +270,7 @@
 		0B75202F18A1467E00C22D82 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0B00D9EA18C5E16900E47229 /* Facebook */,
 				0B75203418A146CD00C22D82 /* weather-broken.png */,
 				0B75203518A146CD00C22D82 /* weather-broken@2x.png */,
 				0B75203618A146CD00C22D82 /* weather-clear.png */,
@@ -269,6 +324,8 @@
 		0B81F73C189CDDCD00E273A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B234CA118C779F900AC1DAB /* Social.framework */,
+				0BBB952918A3E4D60068313B /* SystemConfiguration.framework */,
 				0BAE4C93189E3A92006C8526 /* MapKit.framework */,
 				0B81F782189CF3C000E273A6 /* CoreLocation.framework */,
 				0B81F73D189CDDCD00E273A6 /* Foundation.framework */,
@@ -283,6 +340,7 @@
 		0B81F743189CDDCD00E273A6 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				0B00D9E618C5D46100E47229 /* Facebook */,
 				0B75202F18A1467E00C22D82 /* Images */,
 				0B75201418A12BC400C22D82 /* Model */,
 				0BAE4C8F189E3661006C8526 /* Maps */,
@@ -305,9 +363,7 @@
 				0B7D974818A02AB50030D9E9 /* RemoveRegion.png */,
 				0B7D974918A02AB50030D9E9 /* RemoveRegion@2x.png */,
 				0B39F304189E48CC0009A885 /* arrest.png */,
-				0B39F2FD189E403C0009A885 /* command.json */,
 				0B81F745189CDDCD00E273A6 /* Framework-Info.plist */,
-				0B81F746189CDDCD00E273A6 /* InfoPlist.strings */,
 				0B81F749189CDDCD00E273A6 /* main.m */,
 				0B81F74B189CDDCD00E273A6 /* Framework-Prefix.pch */,
 			);
@@ -327,7 +383,6 @@
 			isa = PBXGroup;
 			children = (
 				0B81F767189CDDCD00E273A6 /* FrameworkTests-Info.plist */,
-				0B81F768189CDDCD00E273A6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -391,6 +446,8 @@
 				0BAE4C91189E3689006C8526 /* PWMapsViewController.m */,
 				0B39F2FF189E42B20009A885 /* PWMyLocation.h */,
 				0B39F300189E42B20009A885 /* PWMyLocation.m */,
+				0B26D93018A2BFBB009CAA0F /* PWDetailsViewController.h */,
+				0B26D93118A2BFBB009CAA0F /* PWDetailsViewController.m */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -457,6 +514,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 0B81F731189CDDCD00E273A6;
 			productRefGroup = 0B81F73B189CDDCD00E273A6 /* Products */;
@@ -474,6 +532,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B00D9F118C5E17900E47229 /* Icon.png in Resources */,
 				0B75203318A1469F00C22D82 /* bg@2x.png in Resources */,
 				0B75205418A146CD00C22D82 /* weather-mist.png in Resources */,
 				0B75205A18A146CD00C22D82 /* weather-rain.png in Resources */,
@@ -482,6 +541,7 @@
 				0B75205518A146CD00C22D82 /* weather-mist@2x.png in Resources */,
 				0B81F759189CDDCD00E273A6 /* Images.xcassets in Resources */,
 				0B7D974B18A02AB50030D9E9 /* RemoveRegion@2x.png in Resources */,
+				0B00D9F218C5E17900E47229 /* Icon@2x.png in Resources */,
 				0B75205918A146CD00C22D82 /* weather-rain-night@2x.png in Resources */,
 				0B75205818A146CD00C22D82 /* weather-rain-night.png in Resources */,
 				0B75206118A146CD00C22D82 /* weather-snow@2x.png in Resources */,
@@ -500,13 +560,13 @@
 				0B75204C18A146CD00C22D82 /* weather-broken.png in Resources */,
 				0B75205D18A146CD00C22D82 /* weather-scattered@2x.png in Resources */,
 				0B39F305189E48CC0009A885 /* arrest.png in Resources */,
-				0B81F748189CDDCD00E273A6 /* InfoPlist.strings in Resources */,
 				0B75204D18A146CD00C22D82 /* weather-broken@2x.png in Resources */,
 				0B75205618A146CD00C22D82 /* weather-moon.png in Resources */,
 				0B81F751189CDDCD00E273A6 /* Main.storyboard in Resources */,
+				0B00D9EF18C5E17900E47229 /* Icon-72.png in Resources */,
 				0B75206018A146CD00C22D82 /* weather-snow.png in Resources */,
 				0B75205B18A146CD00C22D82 /* weather-rain@2x.png in Resources */,
-				0B39F2FE189E403C0009A885 /* command.json in Resources */,
+				0B00D9F018C5E17900E47229 /* Icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +574,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B81F76A189CDDCD00E273A6 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,20 +620,26 @@
 				0B75202E18A140D300C22D82 /* WXManager.m in Sources */,
 				0B60AF24189FF4D800F2002A /* RegionAnnotation.m in Sources */,
 				0B81F77A189CE9DB00E273A6 /* PWLocationViewController.m in Sources */,
+				0BB0D4B318C88FE500418A76 /* PWFBFQLViewController.m in Sources */,
 				0B39F301189E42B20009A885 /* PWMyLocation.m in Sources */,
 				0B1362C618A27DE70079D534 /* PWBiergartenClient.m in Sources */,
+				0B00D9E918C5D47E00E47229 /* PWFacebookViewController.m in Sources */,
 				0B75202B18A140A900C22D82 /* WXClient.m in Sources */,
 				0BAE4C92189E3689006C8526 /* PWMapsViewController.m in Sources */,
 				0B81F78D189D05E400E273A6 /* PWLocationManager.m in Sources */,
 				0B75202518A13FE900C22D82 /* WXCondition.m in Sources */,
+				0BB0D4B018C8846A00418A76 /* PWApiViewController.m in Sources */,
 				0B81F74A189CDDCD00E273A6 /* main.m in Sources */,
 				0B81F777189CE9C900E273A6 /* PWNetworkViewController.m in Sources */,
 				0B60AF25189FF4D800F2002A /* RegionAnnotationView.m in Sources */,
 				0B81F77D189CECD400E273A6 /* PWRestViewController.m in Sources */,
 				0B81F78A189CF83700E273A6 /* PWManager.m in Sources */,
 				0B81F790189D05F200E273A6 /* PWNetworkManager.m in Sources */,
+				0B26D93218A2BFBB009CAA0F /* PWDetailsViewController.m in Sources */,
+				0B234CA618C78A0100AC1DAB /* PWFBPlacePickerViewController.m in Sources */,
 				0B75202818A1405F00C22D82 /* WXDailyForecast.m in Sources */,
 				0B1362C318A27A4C0079D534 /* PWBiergarten.m in Sources */,
+				0B234CAA18C79BDE00AC1DAB /* PWFBFriedPickerViewController.m in Sources */,
 				0B81F74E189CDDCD00E273A6 /* PWAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,28 +663,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0B81F746189CDDCD00E273A6 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0B81F747189CDDCD00E273A6 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		0B81F74F189CDDCD00E273A6 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0B81F750189CDDCD00E273A6 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0B81F768189CDDCD00E273A6 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0B81F769189CDDCD00E273A6 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
