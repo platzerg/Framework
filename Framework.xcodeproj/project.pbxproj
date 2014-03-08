@@ -20,6 +20,13 @@
 		0B26D93218A2BFBB009CAA0F /* PWDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B26D93118A2BFBB009CAA0F /* PWDetailsViewController.m */; };
 		0B39F301189E42B20009A885 /* PWMyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B39F300189E42B20009A885 /* PWMyLocation.m */; };
 		0B39F305189E48CC0009A885 /* arrest.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B39F304189E48CC0009A885 /* arrest.png */; };
+		0B4118B118CB243A003A7C34 /* NearbyVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4118AA18CB243A003A7C34 /* NearbyVenuesViewController.m */; };
+		0B4118B218CB243A003A7C34 /* CheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4118AC18CB243A003A7C34 /* CheckinViewController.m */; };
+		0B4118B318CB243A003A7C34 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4118AE18CB243A003A7C34 /* SettingsViewController.m */; };
+		0B4118B418CB243A003A7C34 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4118B018CB243A003A7C34 /* SearchViewController.m */; };
+		0B4118B618CB2482003A7C34 /* testimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B4118B518CB2482003A7C34 /* testimage@2x.png */; };
+		0B4118C118CB270D003A7C34 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4118BE18CB270D003A7C34 /* FSVenue.m */; };
+		0B4118C218CB270D003A7C34 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4118C018CB270D003A7C34 /* FSConverter.m */; };
 		0B51665318C9F897006857A0 /* PWLinkedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B51665218C9F897006857A0 /* PWLinkedInViewController.m */; };
 		0B51666318CA2728006857A0 /* PWFoursquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B51666218CA2728006857A0 /* PWFoursquareViewController.m */; };
 		0B60AF24189FF4D800F2002A /* RegionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B60AF21189FF4D800F2002A /* RegionAnnotation.m */; };
@@ -114,6 +121,19 @@
 		0B39F2FF189E42B20009A885 /* PWMyLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMyLocation.h; sourceTree = "<group>"; };
 		0B39F300189E42B20009A885 /* PWMyLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMyLocation.m; sourceTree = "<group>"; };
 		0B39F304189E48CC0009A885 /* arrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrest.png; sourceTree = "<group>"; };
+		0B4118A918CB243A003A7C34 /* NearbyVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyVenuesViewController.h; sourceTree = "<group>"; };
+		0B4118AA18CB243A003A7C34 /* NearbyVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyVenuesViewController.m; sourceTree = "<group>"; };
+		0B4118AB18CB243A003A7C34 /* CheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinViewController.h; sourceTree = "<group>"; };
+		0B4118AC18CB243A003A7C34 /* CheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinViewController.m; sourceTree = "<group>"; };
+		0B4118AD18CB243A003A7C34 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		0B4118AE18CB243A003A7C34 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		0B4118AF18CB243A003A7C34 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		0B4118B018CB243A003A7C34 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		0B4118B518CB2482003A7C34 /* testimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "testimage@2x.png"; sourceTree = "<group>"; };
+		0B4118BD18CB270D003A7C34 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVenue.h; sourceTree = "<group>"; };
+		0B4118BE18CB270D003A7C34 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVenue.m; sourceTree = "<group>"; };
+		0B4118BF18CB270D003A7C34 /* FSConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConverter.h; sourceTree = "<group>"; };
+		0B4118C018CB270D003A7C34 /* FSConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConverter.m; sourceTree = "<group>"; };
 		0B51665118C9F897006857A0 /* PWLinkedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWLinkedInViewController.h; sourceTree = "<group>"; };
 		0B51665218C9F897006857A0 /* PWLinkedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWLinkedInViewController.m; sourceTree = "<group>"; };
 		0B51666118CA2728006857A0 /* PWFoursquareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWFoursquareViewController.h; sourceTree = "<group>"; };
@@ -257,6 +277,26 @@
 			name = Facebook;
 			sourceTree = "<group>";
 		};
+		0B4118A818CB2431003A7C34 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0B4118BD18CB270D003A7C34 /* FSVenue.h */,
+				0B4118BE18CB270D003A7C34 /* FSVenue.m */,
+				0B4118BF18CB270D003A7C34 /* FSConverter.h */,
+				0B4118C018CB270D003A7C34 /* FSConverter.m */,
+				0B4118B518CB2482003A7C34 /* testimage@2x.png */,
+				0B4118A918CB243A003A7C34 /* NearbyVenuesViewController.h */,
+				0B4118AA18CB243A003A7C34 /* NearbyVenuesViewController.m */,
+				0B4118AB18CB243A003A7C34 /* CheckinViewController.h */,
+				0B4118AC18CB243A003A7C34 /* CheckinViewController.m */,
+				0B4118AD18CB243A003A7C34 /* SettingsViewController.h */,
+				0B4118AE18CB243A003A7C34 /* SettingsViewController.m */,
+				0B4118AF18CB243A003A7C34 /* SearchViewController.h */,
+				0B4118B018CB243A003A7C34 /* SearchViewController.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		0B51665018C9F87E006857A0 /* LinkedIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +309,7 @@
 		0B51665718CA238B006857A0 /* Foursquare */ = {
 			isa = PBXGroup;
 			children = (
+				0B4118A818CB2431003A7C34 /* API */,
 				0B51666118CA2728006857A0 /* PWFoursquareViewController.h */,
 				0B51666218CA2728006857A0 /* PWFoursquareViewController.m */,
 			);
@@ -599,6 +640,7 @@
 				0B75204C18A146CD00C22D82 /* weather-broken.png in Resources */,
 				0B75205D18A146CD00C22D82 /* weather-scattered@2x.png in Resources */,
 				0B39F305189E48CC0009A885 /* arrest.png in Resources */,
+				0B4118B618CB2482003A7C34 /* testimage@2x.png in Resources */,
 				0B75204D18A146CD00C22D82 /* weather-broken@2x.png in Resources */,
 				0B75205618A146CD00C22D82 /* weather-moon.png in Resources */,
 				0B81F751189CDDCD00E273A6 /* Main.storyboard in Resources */,
@@ -656,16 +698,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B4118C118CB270D003A7C34 /* FSVenue.m in Sources */,
 				0B75202E18A140D300C22D82 /* WXManager.m in Sources */,
 				0B60AF24189FF4D800F2002A /* RegionAnnotation.m in Sources */,
 				0B81F77A189CE9DB00E273A6 /* PWLocationViewController.m in Sources */,
 				0BB0D4B318C88FE500418A76 /* PWFBFQLViewController.m in Sources */,
 				0B39F301189E42B20009A885 /* PWMyLocation.m in Sources */,
+				0B4118B218CB243A003A7C34 /* CheckinViewController.m in Sources */,
 				0B1362C618A27DE70079D534 /* PWBiergartenClient.m in Sources */,
 				0B00D9E918C5D47E00E47229 /* PWFacebookViewController.m in Sources */,
 				0B75202B18A140A900C22D82 /* WXClient.m in Sources */,
 				0BAE4C92189E3689006C8526 /* PWMapsViewController.m in Sources */,
 				0BCDD4EA18C8E55100A2B791 /* PWTwitterViewController.m in Sources */,
+				0B4118B418CB243A003A7C34 /* SearchViewController.m in Sources */,
 				0B81F78D189D05E400E273A6 /* PWLocationManager.m in Sources */,
 				0B51666318CA2728006857A0 /* PWFoursquareViewController.m in Sources */,
 				0B75202518A13FE900C22D82 /* WXCondition.m in Sources */,
@@ -681,7 +726,10 @@
 				0B75202818A1405F00C22D82 /* WXDailyForecast.m in Sources */,
 				0B1362C318A27A4C0079D534 /* PWBiergarten.m in Sources */,
 				0B51665318C9F897006857A0 /* PWLinkedInViewController.m in Sources */,
+				0B4118B118CB243A003A7C34 /* NearbyVenuesViewController.m in Sources */,
+				0B4118B318CB243A003A7C34 /* SettingsViewController.m in Sources */,
 				0B234CAA18C79BDE00AC1DAB /* PWFBFriedPickerViewController.m in Sources */,
+				0B4118C218CB270D003A7C34 /* FSConverter.m in Sources */,
 				0B81F74E189CDDCD00E273A6 /* PWAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

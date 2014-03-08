@@ -11,6 +11,8 @@
 #import <TSMessage.h>
 #import "PWFoursquareViewController.h"
 #import <BZFoursquare.h>
+#import <Foursquare2.h>
+
 
 @interface PWAppDelegate ()
 
@@ -83,7 +85,14 @@
     
     if([[url host] isEqualToString:@"foursquare"])
     {
-        return [_foursquare handleOpenURL:url];
+        if(_isFoursquare2)
+        {
+            [Foursquare2 handleURL:url];
+        }
+        else
+        {
+            return [_foursquare handleOpenURL:url];
+        }
     }
     else
     {

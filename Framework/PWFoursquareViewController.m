@@ -10,9 +10,12 @@
 #import <BZFoursquareRequest.h>
 #import <BZFoursquare.h>
 #import "PWAppDelegate.h"
+#import <Foursquare2.h>
+#import "NearbyVenuesViewController.h"
 
 #define kClientID       @"PU305DK3MQPVEVD5X253UKVEB3FLIO0QGRGTDPOGSHR0ZNGF"
 #define kCallbackURL    @"fsq391994024204840://foursquare"
+#define kSecret         @"HJTTM1VDE00UQ4WOM1JBZXECRHC1GIUXP3XNR0LFVG2VMM3I"
 
 @interface PWFoursquareViewController () <BZFoursquareRequestDelegate, BZFoursquareSessionDelegate>
 - (IBAction)doLoginToFoursquare:(id)sender;
@@ -28,6 +31,7 @@
 @property(nonatomic,copy) NSArray *notifications;
 @property(nonatomic,copy) NSDictionary *response;
 
+
 - (void)cancelRequest;
 - (void)prepareForRequest;
 - (void)searchVenues;
@@ -38,12 +42,13 @@
 @implementation PWFoursquareViewController
 {
     NSString *accessToken;
+    PWAppDelegate *appDel;
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
-    PWAppDelegate *appDel =(PWAppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDel =(PWAppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.foursquare = [[BZFoursquare alloc] initWithClientID:kClientID callbackURL:kCallbackURL];
     _foursquare.version = @"20120609";
@@ -59,6 +64,7 @@
 }
 
 - (IBAction)doLoginToFoursquare:(id)sender {
+    appDel.isFoursquare2 = NO;
     if (![_foursquare isSessionValid]) {
         _foursquareTextView.text = @"Obtain Access Token";
     } else {
@@ -75,14 +81,17 @@
 }
 
 - (IBAction)doNearBy:(id)sender {
+    appDel.isFoursquare2 = NO;
     [self addPhoto];
 }
 
 - (IBAction)doSearch:(id)sender {
+    appDel.isFoursquare2 = NO;
     [self searchVenues];
 }
 
 - (IBAction)doCheckIn:(id)sender {
+    appDel.isFoursquare2 = NO;
     [self checkin];
 }
 
@@ -126,6 +135,15 @@
     NSLog(@"%s: %@", __PRETTY_FUNCTION__, errorInfo);
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ShowApiV2"]) {
+        appDel.isFoursquare2 = YES;
+        [Foursquare2 setupFoursquareWithClientId:kClientID
+                                          secret:kSecret
+                                     callbackURL:kCallbackURL];
+    }
+}
 
 
 
