@@ -10,6 +10,7 @@
 #import "FSVenue.h"
 #import "Foursquare2.h"
 #import "FSConverter.h"
+#import "CheckinViewController.h"
 
 @interface SearchViewController ()
 <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate>
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) CLLocation *location;
 
 @property (nonatomic, weak) NSOperation *lastSearchOperation;
+@property (strong, nonatomic) FSVenue *selected;
 
 @end
 
@@ -71,6 +73,36 @@
                                         NSLog(@"%@",result);
                                     }
                                 }];
+}
+
+- (void)userDidSelectVenue {
+    if ([Foursquare2 isAuthorized]) {
+        [self checkin];
+	} else {
+        [Foursquare2 authorizeWithCallback:^(BOOL success, id result) {
+            if (success) {
+				[Foursquare2  userGetDetail:@"self"
+                                   callback:^(BOOL success, id result){
+                                       if (success) {
+                                           [self checkin];
+                                       }
+                                   }];
+			}
+        }];
+    }
+}
+
+- (void)checkin {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    CheckinViewController *checkin = [storyboard instantiateViewControllerWithIdentifier:@"CheckinVC"];
+    checkin.venue = self.selected;
+    [self.navigationController pushViewController:checkin animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.selected = self.venues[indexPath.row];
+    [self userDidSelectVenue];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

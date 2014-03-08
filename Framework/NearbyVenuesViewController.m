@@ -77,7 +77,7 @@
                                      query:nil
                                      limit:nil
                                     intent:intentCheckin
-                                    radius:@(50000000000000)
+                                    radius:@(100000)
                                 categoryId:nil
                                   callback:^(BOOL success, id result){
                                       if (success) {
