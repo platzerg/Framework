@@ -20,6 +20,8 @@
 		0B26D93218A2BFBB009CAA0F /* PWDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B26D93118A2BFBB009CAA0F /* PWDetailsViewController.m */; };
 		0B39F301189E42B20009A885 /* PWMyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B39F300189E42B20009A885 /* PWMyLocation.m */; };
 		0B39F305189E48CC0009A885 /* arrest.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B39F304189E48CC0009A885 /* arrest.png */; };
+		0B51665318C9F897006857A0 /* PWLinkedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B51665218C9F897006857A0 /* PWLinkedInViewController.m */; };
+		0B51666318CA2728006857A0 /* PWFoursquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B51666218CA2728006857A0 /* PWFoursquareViewController.m */; };
 		0B60AF24189FF4D800F2002A /* RegionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B60AF21189FF4D800F2002A /* RegionAnnotation.m */; };
 		0B60AF25189FF4D800F2002A /* RegionAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B60AF23189FF4D800F2002A /* RegionAnnotationView.m */; };
 		0B75202518A13FE900C22D82 /* WXCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B75202418A13FE900C22D82 /* WXCondition.m */; };
@@ -77,6 +79,7 @@
 		0BB0D4B018C8846A00418A76 /* PWApiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB0D4AF18C8846A00418A76 /* PWApiViewController.m */; };
 		0BB0D4B318C88FE500418A76 /* PWFBFQLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB0D4B218C88FE500418A76 /* PWFBFQLViewController.m */; };
 		0BBB952A18A3E4D60068313B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBB952918A3E4D60068313B /* SystemConfiguration.framework */; };
+		0BCDD4EA18C8E55100A2B791 /* PWTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BCDD4E918C8E55100A2B791 /* PWTwitterViewController.m */; };
 		48DE32482C0245208C673AEC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD27263424D74183857564F7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +114,10 @@
 		0B39F2FF189E42B20009A885 /* PWMyLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMyLocation.h; sourceTree = "<group>"; };
 		0B39F300189E42B20009A885 /* PWMyLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMyLocation.m; sourceTree = "<group>"; };
 		0B39F304189E48CC0009A885 /* arrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrest.png; sourceTree = "<group>"; };
+		0B51665118C9F897006857A0 /* PWLinkedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWLinkedInViewController.h; sourceTree = "<group>"; };
+		0B51665218C9F897006857A0 /* PWLinkedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWLinkedInViewController.m; sourceTree = "<group>"; };
+		0B51666118CA2728006857A0 /* PWFoursquareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWFoursquareViewController.h; sourceTree = "<group>"; };
+		0B51666218CA2728006857A0 /* PWFoursquareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWFoursquareViewController.m; sourceTree = "<group>"; };
 		0B60AF20189FF4D800F2002A /* RegionAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionAnnotation.h; sourceTree = "<group>"; };
 		0B60AF21189FF4D800F2002A /* RegionAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionAnnotation.m; sourceTree = "<group>"; };
 		0B60AF22189FF4D800F2002A /* RegionAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionAnnotationView.h; sourceTree = "<group>"; };
@@ -187,6 +194,8 @@
 		0BB0D4B118C88FE500418A76 /* PWFBFQLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWFBFQLViewController.h; sourceTree = "<group>"; };
 		0BB0D4B218C88FE500418A76 /* PWFBFQLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWFBFQLViewController.m; sourceTree = "<group>"; };
 		0BBB952918A3E4D60068313B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0BCDD4E818C8E55100A2B791 /* PWTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWTwitterViewController.h; sourceTree = "<group>"; };
+		0BCDD4E918C8E55100A2B791 /* PWTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWTwitterViewController.m; sourceTree = "<group>"; };
 		AD27263424D74183857564F7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEBF0155313B4ACD94353042 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,6 +255,24 @@
 				0B00D9EE18C5E17900E47229 /* Icon@2x.png */,
 			);
 			name = Facebook;
+			sourceTree = "<group>";
+		};
+		0B51665018C9F87E006857A0 /* LinkedIn */ = {
+			isa = PBXGroup;
+			children = (
+				0B51665118C9F897006857A0 /* PWLinkedInViewController.h */,
+				0B51665218C9F897006857A0 /* PWLinkedInViewController.m */,
+			);
+			name = LinkedIn;
+			sourceTree = "<group>";
+		};
+		0B51665718CA238B006857A0 /* Foursquare */ = {
+			isa = PBXGroup;
+			children = (
+				0B51666118CA2728006857A0 /* PWFoursquareViewController.h */,
+				0B51666218CA2728006857A0 /* PWFoursquareViewController.m */,
+			);
+			name = Foursquare;
 			sourceTree = "<group>";
 		};
 		0B75201418A12BC400C22D82 /* Model */ = {
@@ -340,6 +367,9 @@
 		0B81F743189CDDCD00E273A6 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				0B51665718CA238B006857A0 /* Foursquare */,
+				0B51665018C9F87E006857A0 /* LinkedIn */,
+				0BCDD4E718C8E53200A2B791 /* Twitter */,
 				0B00D9E618C5D46100E47229 /* Facebook */,
 				0B75202F18A1467E00C22D82 /* Images */,
 				0B75201418A12BC400C22D82 /* Model */,
@@ -450,6 +480,15 @@
 				0B26D93118A2BFBB009CAA0F /* PWDetailsViewController.m */,
 			);
 			name = Maps;
+			sourceTree = "<group>";
+		};
+		0BCDD4E718C8E53200A2B791 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				0BCDD4E818C8E55100A2B791 /* PWTwitterViewController.h */,
+				0BCDD4E918C8E55100A2B791 /* PWTwitterViewController.m */,
+			);
+			name = Twitter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -626,7 +665,9 @@
 				0B00D9E918C5D47E00E47229 /* PWFacebookViewController.m in Sources */,
 				0B75202B18A140A900C22D82 /* WXClient.m in Sources */,
 				0BAE4C92189E3689006C8526 /* PWMapsViewController.m in Sources */,
+				0BCDD4EA18C8E55100A2B791 /* PWTwitterViewController.m in Sources */,
 				0B81F78D189D05E400E273A6 /* PWLocationManager.m in Sources */,
+				0B51666318CA2728006857A0 /* PWFoursquareViewController.m in Sources */,
 				0B75202518A13FE900C22D82 /* WXCondition.m in Sources */,
 				0BB0D4B018C8846A00418A76 /* PWApiViewController.m in Sources */,
 				0B81F74A189CDDCD00E273A6 /* main.m in Sources */,
@@ -639,6 +680,7 @@
 				0B234CA618C78A0100AC1DAB /* PWFBPlacePickerViewController.m in Sources */,
 				0B75202818A1405F00C22D82 /* WXDailyForecast.m in Sources */,
 				0B1362C318A27A4C0079D534 /* PWBiergarten.m in Sources */,
+				0B51665318C9F897006857A0 /* PWLinkedInViewController.m in Sources */,
 				0B234CAA18C79BDE00AC1DAB /* PWFBFriedPickerViewController.m in Sources */,
 				0B81F74E189CDDCD00E273A6 /* PWAppDelegate.m in Sources */,
 			);
@@ -754,6 +796,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Framework/Framework-Prefix.pch";
 				INFOPLIST_FILE = "Framework/Framework-Info.plist";
@@ -768,6 +811,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Framework/Framework-Prefix.pch";
 				INFOPLIST_FILE = "Framework/Framework-Info.plist";

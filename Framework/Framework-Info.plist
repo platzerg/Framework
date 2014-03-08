@@ -25,6 +25,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>fsq391994024204840</string>
 				<string>fb391994024204840</string>
 			</array>
 		</dict>

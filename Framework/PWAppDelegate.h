@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <Reachability.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import <BZFoursquare.h>
 
 @interface PWAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) BZFoursquare *foursquare;
 @end

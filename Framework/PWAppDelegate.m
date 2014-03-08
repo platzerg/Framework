@@ -9,7 +9,8 @@
 #import "PWAppDelegate.h"
 #import "PWFBFriedPickerViewController.h"
 #import <TSMessage.h>
-
+#import "PWFoursquareViewController.h"
+#import <BZFoursquare.h>
 
 @interface PWAppDelegate ()
 
@@ -80,11 +81,19 @@
          annotation:(id)annotation {
     // attempt to extract a token from the url
     
-    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication fallbackHandler:^(FBAppCall *call) {
-                        NSLog(@"In fallback handler");
-                    }];
+    if([[url host] isEqualToString:@"foursquare"])
+    {
+        return [_foursquare handleOpenURL:url];
+    }
+    else
+    {
+        return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication fallbackHandler:^(FBAppCall *call) {
+            NSLog(@"In fallback handler");
+        }];
+
+    }
     
-    
+    return NO;
 }
 
 
