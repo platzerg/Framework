@@ -12,6 +12,7 @@
 #import "PWFoursquareViewController.h"
 #import <BZFoursquare.h>
 #import <Foursquare2.h>
+#import <FlickrKit.h>
 
 
 @interface PWAppDelegate ()
@@ -33,9 +34,17 @@
      [TSMessage setDefaultViewController: self.window.rootViewController];
     [PWFBFriedPickerViewController class];
     
+    [self initFlickr];
+    
     return YES;
 }
-							
+
+-(void) initFlickr
+{
+    [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"73767299b91be4b2db8d67de99d1da66" sharedSecret:@"75e53598d548f2f3"];
+}
+
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -82,6 +91,11 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
     // attempt to extract a token from the url
+    
+    NSString *scheme = [url scheme];
+	if([@"flickr391994024204840" isEqualToString:scheme]) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"UserAuthCallbackNotification" object:url userInfo:nil];
+    }
     
     if([[url host] isEqualToString:@"foursquare"])
     {

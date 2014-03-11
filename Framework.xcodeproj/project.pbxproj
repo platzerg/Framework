@@ -18,6 +18,9 @@
 		0B234CA618C78A0100AC1DAB /* PWFBPlacePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B234CA418C78A0100AC1DAB /* PWFBPlacePickerViewController.m */; };
 		0B234CAA18C79BDE00AC1DAB /* PWFBFriedPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B234CA918C79BDE00AC1DAB /* PWFBFriedPickerViewController.m */; };
 		0B26D93218A2BFBB009CAA0F /* PWDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B26D93118A2BFBB009CAA0F /* PWDetailsViewController.m */; };
+		0B35AD5E18CE297700B7DC9E /* PWFlickrViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B35AD5D18CE297700B7DC9E /* PWFlickrViewController.m */; };
+		0B35AD7618CE3E0F00B7DC9E /* FKPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B35AD7418CE3E0F00B7DC9E /* FKPhotosViewController.m */; };
+		0B35AD7718CE3E0F00B7DC9E /* FKPhotosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B35AD7518CE3E0F00B7DC9E /* FKPhotosViewController.xib */; };
 		0B39F301189E42B20009A885 /* PWMyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B39F300189E42B20009A885 /* PWMyLocation.m */; };
 		0B39F305189E48CC0009A885 /* arrest.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B39F304189E48CC0009A885 /* arrest.png */; };
 		0B4118B118CB243A003A7C34 /* NearbyVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4118AA18CB243A003A7C34 /* NearbyVenuesViewController.m */; };
@@ -118,6 +121,11 @@
 		0B234CA918C79BDE00AC1DAB /* PWFBFriedPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWFBFriedPickerViewController.m; sourceTree = "<group>"; };
 		0B26D93018A2BFBB009CAA0F /* PWDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWDetailsViewController.h; sourceTree = "<group>"; };
 		0B26D93118A2BFBB009CAA0F /* PWDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWDetailsViewController.m; sourceTree = "<group>"; };
+		0B35AD5C18CE297700B7DC9E /* PWFlickrViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWFlickrViewController.h; sourceTree = "<group>"; };
+		0B35AD5D18CE297700B7DC9E /* PWFlickrViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWFlickrViewController.m; sourceTree = "<group>"; };
+		0B35AD7318CE3E0F00B7DC9E /* FKPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKPhotosViewController.h; sourceTree = "<group>"; };
+		0B35AD7418CE3E0F00B7DC9E /* FKPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKPhotosViewController.m; sourceTree = "<group>"; };
+		0B35AD7518CE3E0F00B7DC9E /* FKPhotosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FKPhotosViewController.xib; sourceTree = "<group>"; };
 		0B39F2FF189E42B20009A885 /* PWMyLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWMyLocation.h; sourceTree = "<group>"; };
 		0B39F300189E42B20009A885 /* PWMyLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWMyLocation.m; sourceTree = "<group>"; };
 		0B39F304189E48CC0009A885 /* arrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrest.png; sourceTree = "<group>"; };
@@ -297,6 +305,39 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		0B4118C518CB50CD003A7C34 /* Flickr */ = {
+			isa = PBXGroup;
+			children = (
+				0B35AD7318CE3E0F00B7DC9E /* FKPhotosViewController.h */,
+				0B35AD7418CE3E0F00B7DC9E /* FKPhotosViewController.m */,
+				0B35AD7518CE3E0F00B7DC9E /* FKPhotosViewController.xib */,
+				0B35AD5C18CE297700B7DC9E /* PWFlickrViewController.h */,
+				0B35AD5D18CE297700B7DC9E /* PWFlickrViewController.m */,
+			);
+			name = Flickr;
+			sourceTree = "<group>";
+		};
+		0B4118C618CB50D5003A7C34 /* GooglePlus */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = GooglePlus;
+			sourceTree = "<group>";
+		};
+		0B4118C718CB810D003A7C34 /* Instagram */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Instagram;
+			sourceTree = "<group>";
+		};
+		0B4118C818CB811F003A7C34 /* GooglePlus */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = GooglePlus;
+			sourceTree = "<group>";
+		};
 		0B51665018C9F87E006857A0 /* LinkedIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +449,10 @@
 		0B81F743189CDDCD00E273A6 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				0B4118C818CB811F003A7C34 /* GooglePlus */,
+				0B4118C718CB810D003A7C34 /* Instagram */,
+				0B4118C618CB50D5003A7C34 /* GooglePlus */,
+				0B4118C518CB50CD003A7C34 /* Flickr */,
 				0B51665718CA238B006857A0 /* Foursquare */,
 				0B51665018C9F87E006857A0 /* LinkedIn */,
 				0BCDD4E718C8E53200A2B791 /* Twitter */,
@@ -632,6 +677,7 @@
 				0B75204E18A146CD00C22D82 /* weather-clear.png in Resources */,
 				0B7D974A18A02AB50030D9E9 /* RemoveRegion.png in Resources */,
 				0B75205018A146CD00C22D82 /* weather-few-night.png in Resources */,
+				0B35AD7718CE3E0F00B7DC9E /* FKPhotosViewController.xib in Resources */,
 				0B75206318A146CD00C22D82 /* weather-tstorm@2x.png in Resources */,
 				0B75204F18A146CD00C22D82 /* weather-clear@2x.png in Resources */,
 				0B75205718A146CD00C22D82 /* weather-moon@2x.png in Resources */,
@@ -710,6 +756,7 @@
 				0B75202B18A140A900C22D82 /* WXClient.m in Sources */,
 				0BAE4C92189E3689006C8526 /* PWMapsViewController.m in Sources */,
 				0BCDD4EA18C8E55100A2B791 /* PWTwitterViewController.m in Sources */,
+				0B35AD5E18CE297700B7DC9E /* PWFlickrViewController.m in Sources */,
 				0B4118B418CB243A003A7C34 /* SearchViewController.m in Sources */,
 				0B81F78D189D05E400E273A6 /* PWLocationManager.m in Sources */,
 				0B51666318CA2728006857A0 /* PWFoursquareViewController.m in Sources */,
@@ -720,6 +767,7 @@
 				0B60AF25189FF4D800F2002A /* RegionAnnotationView.m in Sources */,
 				0B81F77D189CECD400E273A6 /* PWRestViewController.m in Sources */,
 				0B81F78A189CF83700E273A6 /* PWManager.m in Sources */,
+				0B35AD7618CE3E0F00B7DC9E /* FKPhotosViewController.m in Sources */,
 				0B81F790189D05F200E273A6 /* PWNetworkManager.m in Sources */,
 				0B26D93218A2BFBB009CAA0F /* PWDetailsViewController.m in Sources */,
 				0B234CA618C78A0100AC1DAB /* PWFBPlacePickerViewController.m in Sources */,
