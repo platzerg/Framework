@@ -23,13 +23,14 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-            <key>CFBundleURLName</key>
+			<key>CFBundleURLName</key>
 			<string>com.devedup.flickrkit</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fsq391994024204840</string>
 				<string>fb391994024204840</string>
 				<string>flickr391994024204840</string>
+				<string>inst391994024204840</string>
 			</array>
 		</dict>
 	</array>

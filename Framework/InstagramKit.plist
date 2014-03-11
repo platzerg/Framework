@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+    <dict>
+        <key>InstagramKitAppClientId</key>
+        <string>403a2649d1e546e2807030627a0e3927</string>
+        <key>InstagramKitAppRedirectURL</key>
+        <string>inst391994024204840://instagram</string>
+        <key>InstagramKitBaseUrl</key>
+        <string>https://api.instagram.com/v1/</string>
+        <key>InstagramKitAuthorizationUrl</key>
+        <string>https://api.instagram.com/oauth/authorize/</string>
+    </dict>
+</plist>
 </plist>

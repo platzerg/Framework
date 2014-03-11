@@ -28,6 +28,8 @@
 {
     [super viewDidLoad];
     
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(instagramAuthenticateCallback:) name:@"instAuthCallbackNotification" object:nil];
+    
     mWebView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     mWebView.scrollView.bounces = NO;
     mWebView.contentMode = UIViewContentModeScaleAspectFit;
@@ -38,14 +40,11 @@
     
 }
 
-- (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{}];
-}
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    NSString *URLString = [request.URL absoluteString];
-    if ([URLString hasPrefix:[[InstagramEngine sharedEngine] appRedirectURL]]) {
+- (void) instagramAuthenticateCallback:(NSNotification *)notification {
+    {
+        NSURL *callbackURL = notification.object;
+        NSString *URLString = [callbackURL absoluteString];
         NSString *delimiter = @"access_token=";
         NSArray *components = [URLString componentsSeparatedByString:delimiter];
         if (components.count > 1) {
@@ -57,14 +56,37 @@
                 [self.collectionViewController loadMedia];
             }];
         }
-        return NO;
+    }
+}
+
+
+- (IBAction)back:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    
+    // Determine if we want the system to handle it.
+    NSURL *url = request.URL;
+    NSString *URLString = [request.URL absoluteString];
+    if (![url.scheme isEqual:@"http"] && ![url.scheme isEqual:@"https"]) {
+        if ([[UIApplication sharedApplication]canOpenURL:url]) {
+            [[UIApplication sharedApplication]openURL:url];
+            return NO;
+        }
     }
     return YES;
 }
 
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSLog(@"ERROR: %@", response);
+}
+
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    
+    NSLog(@"ERROR: %@", error);
 }
 
 

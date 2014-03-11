@@ -13,6 +13,7 @@
 #import <BZFoursquare.h>
 #import <Foursquare2.h>
 #import <FlickrKit.h>
+#import <InstagramKit.h>
 
 
 @interface PWAppDelegate ()
@@ -35,6 +36,7 @@
     [PWFBFriedPickerViewController class];
     
     [self initFlickr];
+    [self initInstagram];
     
     return YES;
 }
@@ -42,6 +44,11 @@
 -(void) initFlickr
 {
     [[FlickrKit sharedFlickrKit] initializeWithAPIKey:@"73767299b91be4b2db8d67de99d1da66" sharedSecret:@"75e53598d548f2f3"];
+}
+
+-(void) initInstagram
+{
+   
 }
 
 
@@ -84,6 +91,19 @@
     [FBSession.activeSession close];
 }
 
+- (BOOL)canOpenURL:(NSURL *)url
+{
+    NSString *URLString = [url absoluteString];
+    if ([url.scheme isEqual:@"http"] || [url.scheme isEqual:@"https"]) {
+        return YES;
+    }
+    else if ([URLString hasPrefix:@"inst391994024204840://instagram"]) {
+        return YES;
+    }
+    return YES;
+}
+
+
 // FBSample logic
 // If we have a valid session at the time of openURL call, we handle Facebook transitions
 // by passing the url argument to handleOpenURL; see the "Just Login" sample application for
@@ -95,6 +115,13 @@
     NSString *scheme = [url scheme];
 	if([@"flickr391994024204840" isEqualToString:scheme]) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"UserAuthCallbackNotification" object:url userInfo:nil];
+    }
+    else if([@"inst391994024204840" isEqualToString:scheme])
+    {
+        if( [[InstagramEngine sharedEngine] application:application openURL:url sourceApplication:sourceApplication annotation:annotation]){
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"instAuthCallbackNotification" object:url userInfo:nil];
+            return YES;
+        }
     }
     
     if([[url host] isEqualToString:@"foursquare"])
